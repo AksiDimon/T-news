@@ -1,0 +1,17 @@
+.card {
+
+}
+
+.card__title {
+
+}
+
+.card__body {
+
+}
+
+.card__actions {
+    
+}
+
+/* все стили posts и comment абстрагировать в  card что бы не привязываться к конкретике*/

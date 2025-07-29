@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<link rel="stylesheet" href="/components/header.css">
+<link rel="stylesheet" href="/components/styles.css">
+<link rel="stylesheet" href="/components/buttons.css" />
+<script type="module" src="/components/header.js"></script>
+<link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
+<script type="module" src="pages/mainNoAuth/mainNoAuth.js"></script>
+
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id ="posts-container" class="comment-container" > </div>
+           <template id="comment-template">
+        <div class="comment">
+          
+          <h3 class="comment__title">    
+                   <img src="/components/icons/seneka 1.svg" alt="user icon" class="comment__icon" />
+            <slot name="title" class="comment__title"></slot>
+          </h3>
+            <p class="comment__body"> <slot name="body" class="comment__body"></slot></p>
+          <div class="comment__footer">
+            <button type="button" class="btn-like">
+              <img
+                src="/components/icons/Heart.svg"
+              />
+              <span class="count-like"><slot name="likes" ></slot></span>
+            </button>
+            <button type="button" class="btn-comments" >
+              Комментарии<span class="btn-comments__count"><slot name="commentsCount" ></slot></span>
+            </button>
+          </div>
+        </div>
+      </template>
+</div>
+    </div>
+  </body>
+</html>

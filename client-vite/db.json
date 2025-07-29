@@ -1,0 +1,117 @@
+{
+  "users": [
+    {
+      "id": "user_1",
+      "username": "alice",
+      "avatar": "https://example.com/avatar/alice.jpg",
+      "bio": "Frontend engineer",
+      "following": ["user_2", "user_3"]
+    },
+    {
+      "id": "user_2",
+      "username": "bob",
+      "avatar": "https://example.com/avatar/bob.jpg",
+      "bio": "Loves coffee and music",
+      "following": []
+    },
+    {
+      "id": "user_3",
+      "username": "charlie",
+      "avatar": "https://example.com/avatar/charlie.jpg",
+      "bio": "Bookworm and gamer",
+      "following": ["user_1"]
+    },
+        {
+      "id": "user_4",
+      "username": "Pavel",
+      "avatar": "https://example.com/avatar/bob.jpg",
+      "bio": "Loves coffee and music",
+      "following": []
+    },
+    {
+      "id": "user_5",
+      "username": "Dima",
+      "avatar": "https://example.com/avatar/charlie.jpg",
+      "bio": "Bookworm and gamer",
+      "following": ["user_1"]
+    }
+  ],
+  "posts": [
+    {
+      "id": "post_1",
+      "userId": "user_1",
+      "content": "Just setting up my twttr.",
+      "likes": 10,
+      "comments": [
+        {
+          "id": "comment_1",
+          "userId": "user_2",
+          "content": "Welcome!"
+        },
+        {
+          "id": "comment_2",
+          "userId": "user_3",
+          "content": "Nice to see you here!"
+        }
+      ]
+    },
+    {
+      "id": "post_2",
+      "userId": "user_2",
+      "content": "Coffee is the answer.",
+      "likes": 3,
+      "comments": [
+        {
+          "id": "comment_3",
+          "userId": "user_1",
+          "content": "Totally agree!"
+        }
+      ]
+    }
+  ],
+  "feed": [
+    {
+      "id": "post_2",
+      "userId": "user_2",
+      "content": "Coffee is the answer.",
+      "likes": 3,
+      "comments": [
+        {
+          "id": "comment_3",
+          "userId": "user_1",
+          "content": "Totally agree!"
+        }
+      ]
+    }
+  ],
+  "search_results_users": [
+    {
+      "id": "user_3",
+      "username": "charlie",
+      "avatar": "https://example.com/avatar/charlie.jpg",
+      "bio": "Bookworm and gamer",
+      "following": ["user_1"]
+    }
+  ],
+  "search_results_posts": [
+    {
+      "id": "post_1",
+      "userId": "user_1",
+      "content": "Just setting up my twttr.",
+      "likes": 10,
+      "comments": [
+        {
+          "id": "comment_1",
+          "userId": "user_2",
+          "content": "Welcome!"
+        },
+        {
+          "id": "comment_2",
+          "userId": "user_3",
+          "content": "Nice to see you here!"
+        }
+      ]
+    }
+  ]
+}
+

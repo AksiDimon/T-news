@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+    <link rel="stylesheet" href="/components/styles.css" />
+    <script type="module" src="/pages/profile/profile.js"></script>
+    <script type="module" src="/components/header.js"></script>
+    <link rel="stylesheet" href="/components/header.css" />
+    <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
+    <link rel="stylesheet" href="/pages/profile/profile.css" />
+  </head>
+  <body>
+    <div id="header"></div>
+    <!-- <div>
+        <div>
+            Photo
+            change photo
+        </div>
+        <div>
+            <div>
+                header, change header
+            </div>
+            <div> description, change description </div>
+        </div>
+    </div> -->
+    <div class="profile">
+      <aside class="profile__sidebar">
+        <div class="profile__avatar">
+          <img src="/components/icons/seneka 1.svg" alt="Аватар пользователя" />
+        </div>
+        <button class="profile__edit-photo">Изменить фото</button>
+      </aside>
+
+      <section class="profile__main">
+        <header class="profile__header">
+          <h1 class="profile__title">
+            Луций Анней Сенека
+            <!-- иконка ссылки -->
+            <img
+              src="/components/icons/Container.svg"
+              alt="edit"
+              width="20"
+              height="20"
+            />
+          </h1>
+          <button class="profile__subscribe">Подписаться</button>
+        </header>
+
+        <div class="profile__bio">
+          <div class="description">
+            <p style="max-width: 560px">
+              Обо мне: римский философ‑стоик, поэт и государственный деятель.
+              Воспитатель Нерона и один из крупнейших представителей стоицизма.
+              Сын Луция (Марка) Аннея Сенеки Старшего …
+            </p>
+          </div>
+
+          <img class="" src="/components/icons/Container.svg" alt="edit" />
+          <!-- и так далее, сколько нужно абзацев -->
+        </div>
+      </section>
+    </div>
+
+    <form id="comment-form" class="post-form" method="POST">
+      <textarea
+        required
+        placeholder="Введите свой пост"
+        id="story"
+        name="story"
+        rows="5"
+        class="post-form__textarea"
+      ></textarea>
+      <div class="post-form__actions">
+        <button id="send-btn" type="submit" class="post-form__send-btn">
+          Отправить
+        </button>
+      </div>
+    </form>
+
+    <template id="comment-template">
+      <div class="comment" style="margin-top: 6vh 0">
+        <h3 class="comment__title" style="padding-top: 0">
+          <img
+            src="/components/icons/seneka 1.svg"
+            alt="user icon"
+            class="comment__icon"
+          />
+          <slot name="title" class="comment__title"></slot>
+        </h3>
+        <div class="comment-body__container">
+          <p class="comment-body" style="font-size: 15px">
+            <!-- Луций философ‑стоик -->
+            <slot name="body" class="comment__body"></slot>
+          </p>
+          <button type="button" class="btn-delete">
+            <img src="/components/icons/icon.svg" />
+          </button>
+        </div>
+
+        <div class="comment__footer">
+          <button type="button" class="btn-like">
+            <img
+              src="https://api.iconify.design/streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love.svg"
+            />
+            <span class="count-like"> &nbsp;10</span>
+          </button>
+          <button type="button" class="btn-comments">
+            Комментарии<span class="btn-comments__count">&nbsp;5</span>
+          </button>
+        </div>
+      </div>
+    </template>
+    <div id="comments-container"></div> 
+  </body>
+</html>

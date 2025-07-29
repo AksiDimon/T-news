@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="/components/header.css" />
+  <link rel="stylesheet" href="/components/buttons.css" />
+  <link rel="stylesheet" href="/pages/auth/auth.css" />
+  <script type="module" src="/pages/auth/auth.js"></script>
+</head>
+<body>
+<div id="header"></div>
+<div class="container">
+  <form class="card" id="auth-form">
+    <h1>Вход</h1>
+    <div class="field">
+      <input name="login" type="text" placeholder="Логин" required />
+    </div>
+    <div class="field">
+      <input name="password" type="password" placeholder="Пароль" required />
+    </div>
+    <div class="buttons">
+      <button class="btn btn-secondary" type="button" id="user-reg">Зарегистрироваться</button>
+      <button class="btn btn-primary" id="user-auth" type="submit">Войти</button>
+    </div>
+  </form>
+</div>
+</body>
+</html>

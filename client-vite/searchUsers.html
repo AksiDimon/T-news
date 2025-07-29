@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/components/header.css" />
+    <link rel="stylesheet" href="/components/styles.css" />
+    <script type="module" src="/pages/searchUsers/searchUsers.js" ></script>
+
+    <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css"/>
+  </head>
+  <style>
+  </style>
+  <body>
+    <div id="header"></div>
+    <!-- HTML -->
+    <div class="search-user">
+      <!-- 1. Тогглер: переключатель «Пользователи / Посты» -->
+      <nav class="toggle-nav">
+        <button class="toggle-nav__btn toggle-nav__btn--active">
+          Пользователи
+        </button>
+        <button class="toggle-nav__btn">Посты</button>
+      </nav>
+
+      <!-- 2. Список пользователей с аватарками и радиокнопками -->
+      <ul class="user-list" id="user-container">
+        <template id="user-template">
+          <li class="user-list__item">
+            <div class="user-item__avatar">
+              <img src="/components/icons/seneka 1.svg" alt="аватар" />
+            </div>
+            <div class="user-item__name"><slot name="username"></slot></div>
+          </li>
+        </template>
+        
+
+        <!-- <li class="user-list__item">
+          <div class="user-item__avatar">
+            <img src="/components/icons/seneka 1.svg" alt="аватар" />
+          </div>
+          <div class="user-item__name">Гай Юлий Гигин</div>
+        </li> -->
+
+        <!-- ...и так далее -->
+      </ul>
+    </div>
+  </body>
+</html>

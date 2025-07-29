@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/components/header.css" />
+    <script type="module" src="/components/header.js"></script>
+    <script type="module" src="/pages/comments/comments.js"></script>
+    <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
+    <link rel="stylesheet" href="/pages/comments/comments.css" />
+    <style>
+      /* #comments-container {
+      padding-left: 20vw;
+    } */
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+
+    <div id="post-preview" class="post-container">
+      <template id="post-template">
+        <div class="comment">
+          <h3 class="comment__title">
+            <img
+              src="/components/icons/seneka 1.svg"
+              alt="user icon"
+              class="comment__icon"
+            />
+            <slot name="title" class="comment__title"></slot>
+          </h3>
+          <p class="comment__body">
+            <slot name="body"></slot>
+          </p>
+          <div class="comment__footer">
+            <button type="button" class="btn-like">
+              <img
+                src="https://api.iconify.design/streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love.svg"
+                alt="like icon"
+              />
+              <span class="count-like">10</span>
+            </button>
+            <div class="container-coment">
+              <button type="button" class="btn-comments" style="background-color: #e2eaf41f !important; border: 1px solid #0010241F;">
+                Комментарии<span class="btn-comments__count">5</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </template>
+    </div>
+
+    <div id="comments-section" class="comment-main-container">
+      <!-- <h2>Комментарии</h2> -->
+
+      <div id="comments-container">
+        <template id="comment-template">
+          <div class="comment-remark">
+            <div class="comment-remark__header">
+              <img
+                src="/components/icons/seneka 1.svg"
+                alt="user icon"
+                class="comment__icon"
+              />
+              <h3>
+                <slot name="title" class="comment__title"></slot>
+              </h3>
+            </div>
+            <div class="comment-remark__body">
+              <p class="comment-remark__data">
+                <slot name="body"></slot>
+              </p>
+              <button type="button" class="btn-delete">
+                <img src="/components/icons/icon.svg" />
+              </button>
+            </div>
+          </div>
+        </template>
+      </div>
+
+      <!-- Форма для нового комментария -->
+      <form id="comment-form" method="POST">
+        <textarea
+          required
+          placeholder="Введите свой коментарий"
+          id="story"
+          name="story"
+          rows="5"
+          cols="33"
+        ></textarea>
+        <div style="display: flex; justify-content: end">
+          <button id="send-btn" type="submit" class="send-btn">
+            Отправить
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

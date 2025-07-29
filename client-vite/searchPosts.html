@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/components/header.css" />
+    <link rel="stylesheet" href="/components/styles.css" />
+    <script type="module" src="/pages/profile/profile.js"></script>
+    <script type="module" src="/components/header.js"></script>
+    <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css" />
+    <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
+    <script type="module" src="pages/mainNoAuth/mainNoAuth.js"></script>
+  </head>
+  <style></style>
+  <body>
+    <div id="header"></div>
+    <!-- HTML -->
+    <div class="search-user">
+      <!-- 1. Тогглер: переключатель «Пользователи / Посты» -->
+      <nav class="toggle-nav">
+        <button class="toggle-nav__btn toggle-nav__btn--active">
+          Пользователи
+        </button>
+        <button class="toggle-nav__btn">Посты</button>
+      </nav>
+
+      <!-- Место отображения найденых постов -->
+      <div
+        id="posts-container"
+        class="comment-container"
+        style="padding-top: 0"
+      ></div>
+      <template id="comment-template">
+        <div class="comment">
+          <h3 class="comment__title">
+            <img
+              src="/components/icons/seneka 1.svg"
+              alt="user icon"
+              class="comment__icon"
+            />
+            <slot name="title" class="comment__title"></slot>
+          </h3>
+          <p class="comment__body">
+            <slot name="body" class="comment__body"></slot>
+          </p>
+          <div class="comment__footer">
+            <button type="button" class="btn-like">
+              <img
+                src="https://api.iconify.design/streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love.svg"
+              />
+              <span class="count-like"> &nbsp;10</span>
+            </button>
+            <button type="button" class="btn-comments">
+              Комментарии<span class="btn-comments__count">&nbsp;5</span>
+            </button>
+          </div>
+        </div>
+      </template>
+    </div>
+  </body>
+</html>

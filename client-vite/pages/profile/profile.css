@@ -1,0 +1,202 @@
+* {
+  font-family: 'Neue Haas Unica W1G', sans-serif;
+}
+.profile {
+  display: flex;
+  gap: 2rem;
+  /* border: 1px solid black; */
+  padding: 2rem 4rem 3rem 4rem;
+  flex-wrap: wrap;
+  width: 90vw;
+  max-width: 900px; /* можно подогнать под макет */
+  margin: 0 auto; /* по центру */
+}
+
+@media (max-width: 480px) {
+  .profile {
+    padding: 0.5rem;
+  }
+}
+
+      /* левая колонка: аватар + кнопка */
+.profile__sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  /* border: 1px solid black; */
+}
+.profile__avatar {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #bdf050;
+  padding: 2px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.profile__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile__edit-photo {
+  /* border: 1px solid black; */
+
+  color: aliceblue;
+  padding: 0.5rem 1rem;
+  background-color: #428bf9;
+  border-radius: 10px;
+  font-size: 13px;
+  border: none;
+}
+
+      /* правая колонка: имя + кнопка + био */
+.profile__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  /* border: 1px solid black; */
+}
+
+      /* шапка с заголовком и кнопкой «Подписаться» */
+.profile__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* border: 1px solid black; */
+}
+.profile__title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  /* border: 1px solid black; */
+  margin: 0;
+  font-size: 2.25rem;
+  font-family: 'Neue Haas Unica W1G', sans-serif;
+}
+@media(max-width: 440px) {
+  .profile__title{
+      align-items: first baseline;
+  }
+}
+.profile__subscribe {
+  
+  border: 1px solid black;
+  padding: 0.5rem 1rem;
+  border: 1px solid #f1f5f9;
+  border-radius: 8px;
+  background-color: white;
+  color: #428bf9;
+}
+
+
+      /* блок «Обо мне» */
+.profile__bio {
+  /* border: 1px solid black; */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.description {
+  max-width: 50vw;
+}
+.profile__bio p {
+  margin: 0;
+  line-height: 1.7rem;
+}
+
+      /* коменты  */
+.post-form {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* расстояние между textarea и кнопкой */
+
+  width: 90vw;
+  max-width: 900px; /* можно подогнать под макет */
+  margin: 0 auto; /* по центру */
+  padding: 1rem 0; /* если нужен внутренний отступ вокруг формы */
+  box-sizing: border-box;
+}
+
+      /* поле ввода */
+.post-form__textarea {
+  width: 100%;
+  min-height: 12vh; /* приблизительно высота из скрина */
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 1rem; /* скруглённые углы */
+  background-color: #f1f5f9;
+  font-size: 1rem;
+  line-height: 1.4;
+  resize: none;
+  outline: none;
+  box-sizing: border-box;
+}
+textarea:focus {
+  box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.6);
+}
+
+/* по стилю placeholder */
+.post-form__textarea::placeholder {
+  color: #9ca3af;
+  font-style: normal;
+  font-size: 1rem;
+}
+
+/* обёртка для кнопки, прижимаем вправо */
+.post-form__actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* сама кнопка */
+.post-form__send-btn {
+  padding: 0.75rem 1.5rem;
+  background-color: #FFDD2D;;
+  color: #1f2937;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* ховер‑эффект */
+.post-form__send-btn:hover {
+  background-color: #e2b508;
+  transform: translateY(-2px);
+}
+
+.comment {
+  margin: 0 auto;
+  max-width: 900px;
+  margin-top: 5vh;
+  border-radius: 22px;
+  width: 90vw;
+}
+.comment-body {
+  padding: 2vh 0;
+}
+
+.comment-body__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5vw 0 0vw 2vh;
+  line-height: 1.3rem;
+}
+.btn-delete {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  border: none;
+  background: none;
+  display: flex;
+}
+.btn-delete:hover {
+  transform: scale(1.3);
+  background-color: #f1f5f9;
+}
