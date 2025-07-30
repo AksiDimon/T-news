@@ -84,7 +84,6 @@ function renderComment(comment) {
 
 
 
-
 // Добавляю кнопку удаления комента только для залагиненых
   const btnDelete = frag.querySelector('.btn-delete');
   btnDelete.addEventListener('click', deleteComment);

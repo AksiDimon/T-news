@@ -84,7 +84,7 @@ export async function renderHeader(selector = '#header', onSearchInput = ()=> nu
   // addEventHeaderSearch(searchElement,onSearchInput);
   renderHeaderContent(guestBlock, userBlock, isAuthPage, isMainNoAuth, isProfilePage);
 
-  return searchElement;
+  // return searchElement;
 
 }
 
