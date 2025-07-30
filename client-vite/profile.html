@@ -31,33 +31,43 @@
           <img src="/components/icons/seneka 1.svg" alt="Аватар пользователя" />
         </div>
         <button class="profile__edit-photo">Изменить фото</button>
+        <input
+          type="file"
+          id="avatar-input"
+          accept="image/*"
+          style="display: none"
+        />
       </aside>
 
       <section class="profile__main">
         <header class="profile__header">
           <h1 class="profile__title">
-            Луций Анней Сенека
+            <span class="profile__username">Луций Анней Сенека</span>
             <!-- иконка ссылки -->
             <img
               src="/components/icons/Container.svg"
               alt="edit"
               width="20"
               height="20"
+              class="profile__edit-icon"
+              data-field="username"
             />
           </h1>
           <button class="profile__subscribe">Подписаться</button>
         </header>
 
         <div class="profile__bio">
-          <div class="description">
-            <p style="max-width: 560px">
-              Обо мне: римский философ‑стоик, поэт и государственный деятель.
-              Воспитатель Нерона и один из крупнейших представителей стоицизма.
-              Сын Луция (Марка) Аннея Сенеки Старшего …
-            </p>
-          </div>
-
-          <img class="" src="/components/icons/Container.svg" alt="edit" />
+          <p class="profile__bio-text" >
+            Обо мне: римский философ‑стоик, поэт и государственный деятель.
+            Воспитатель Нерона и один из крупнейших представителей стоицизма.
+            Сын Луция (Марка) Аннея Сенеки Старшего …
+          </p>
+          <img
+            src="/components/icons/Container.svg"
+            alt="edit"
+            class="profile__edit-icon"
+            data-field="bio"
+          />
           <!-- и так далее, сколько нужно абзацев -->
         </div>
       </section>
@@ -102,16 +112,16 @@
         <div class="comment__footer">
           <button type="button" class="btn-like">
             <img
-              src="https://api.iconify.design/streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love.svg"
+              src="/components/icons/Heart.svg"
             />
-            <span class="count-like"> &nbsp;10</span>
+            <span class="count-like"><slot name="likesCount"></slot></span>
           </button>
-          <button type="button" class="btn-comments">
-            Комментарии<span class="btn-comments__count">&nbsp;5</span>
+          <button type="button" class="btn-comments" data-post-id="" onclick="location.href='comments.html'">
+            Комментарии<span class="btn-comments__count"><slot name="commentsCount"></slot></span>
           </button>
         </div>
       </div>
     </template>
-    <div id="comments-container"></div> 
+    <div id="comments-container"></div>
   </body>
 </html>

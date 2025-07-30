@@ -19,7 +19,7 @@
     <div class="search-user">
       <!-- 1. Тогглер: переключатель «Пользователи / Посты» -->
       <nav class="toggle-nav">
-        <button class="toggle-nav__btn toggle-nav__btn--active">
+        <button class="toggle-nav__btn toggle-nav__btn--active" onclick="location.href='searchUsers.html'">
           Пользователи
         </button>
         <button class="toggle-nav__btn">Посты</button>
@@ -47,12 +47,12 @@
           <div class="comment__footer">
             <button type="button" class="btn-like">
               <img
-                src="https://api.iconify.design/streamline:interface-favorite-heart-reward-social-rating-media-heart-it-like-favorite-love.svg"
+                src="/components/icons/Heart.svg"
               />
-              <span class="count-like"> &nbsp;10</span>
+              <span class="count-like">10</span>
             </button>
             <button type="button" class="btn-comments">
-              Комментарии<span class="btn-comments__count">&nbsp;5</span>
+              Комментарии<span class="btn-comments__count">5</span>
             </button>
           </div>
         </div>

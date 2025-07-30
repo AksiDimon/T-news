@@ -62,6 +62,11 @@
   transform: translate(-5%);
 }
 
+.guest-actions__search input::placeholder {
+  color: #888888c1;   /* здесь ваш нужный цвет */
+  opacity: 1;       /* чтобы в браузерах не был полупрозрачным */
+}
+
 
 .guest-actions__auth {
   align-items: center;     /* выравнивание по центру по вертикали */
