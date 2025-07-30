@@ -3,174 +3,107 @@
     {
       "id": "user_1",
       "username": "Луций Анней Сенека",
-      "avatar": null,
-      "bio": "Обо мне: римский философ‑стоик, поэт и государственный деятель.\n            Воспитатель Нерона и один из крупнейших представителей стоицизма.\n            Сын Луция (Марка) Аннея Сенеки Старшего …",
-      "following": [
-        "user_2",
-        "user_3"
-      ]
+      "avatar": "https://example.com/avatar/seneca.jpg",
+      "bio": "Обо мне: римский философ-стоик, поэт и государственный деятель. Воспитатель Нерона и один из крупнейших представителей стоицизма. Сын Луция (Марка) Аннея Сенеки Старшего…",
+      "following": ["user_2", "user_3"]
     },
     {
       "id": "user_2",
-      "username": "bob",
+      "username": "Bob Smith",
       "avatar": "https://example.com/avatar/bob.jpg",
-      "bio": "Loves coffee and music",
-      "following": []
+      "bio": "Coffee enthusiast and musician. Always exploring new sounds and rhythms.",
+      "following": ["user_1"]
     },
     {
       "id": "user_3",
-      "username": "charlie",
+      "username": "Charlie Nguyen",
       "avatar": "https://example.com/avatar/charlie.jpg",
-      "bio": "Bookworm and gamer",
-      "following": [
-        "user_1"
-      ]
+      "bio": "Avid reader and gamer. Sharing book recommendations and game reviews.",
+      "following": ["user_1", "user_2"]
     },
     {
       "id": "user_4",
-      "username": "Pavel",
-      "avatar": "https://example.com/avatar/bob.jpg",
-      "bio": "Loves coffee and music",
-      "following": []
+      "username": "Pavel Ivanov",
+      "avatar": "https://example.com/avatar/pavel.jpg",
+      "bio": "UX designer and world traveler. Exploring cultures one city at a time.",
+      "following": ["user_3"]
     },
     {
       "id": "user_5",
-      "username": "Dima",
-      "avatar": "https://example.com/avatar/charlie.jpg",
-      "bio": "Bookworm and gamer",
-      "following": [
-        "user_1"
-      ]
+      "username": "Dmitry Petrov",
+      "avatar": "https://example.com/avatar/dmitry.jpg",
+      "bio": "Photographer and blogger. Capturing moments through the lens.",
+      "following": ["user_1", "user_4"]
     }
   ],
   "posts": [
     {
       "id": "post_1",
       "userId": "user_1",
-      "content": "Just setting up my twttr.",
-      "likes": 10,
+      "content": "Сегодня читаю лекцию о стоицизме. Какие ваши любимые философы? #stoicism",
+      "likes": 25,
       "comments": [
         {
           "id": "comment_1",
           "userId": "user_2",
-          "content": "Welcome!"
+          "content": "Для меня Эпиктет — источник вдохновения."
         },
         {
           "id": "comment_2",
           "userId": "user_3",
-          "content": "Nice to see you here!"
-        },
-        {
-          "id": "comment_1753865964569",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865983886",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865985820",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865986336",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865986556",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865986719",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865986903",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865987103",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753865987336",
-          "userId": "User",
-          "content": "тоаотаот",
-          "avatar": "./svg"
-        },
-        {
-          "id": "comment_1753866487281",
-          "userId": "User",
-          "content": "dcs",
-          "avatar": "./svg"
+          "content": "Интересная тема, Сенека!"
         }
       ]
     },
     {
       "id": "post_2",
       "userId": "user_2",
-      "content": "Coffee is the answer.",
-      "likes": 3,
+      "content": "Записал новый трек сегодня вечером 🎶 Скоро выложу!",
+      "likes": 12,
       "comments": [
         {
           "id": "comment_3",
           "userId": "user_1",
-          "content": "Totally agree!"
+          "content": "Жду с нетерпением!"
         }
       ]
     },
     {
       "id": "post_3",
-      "userId": "user_2",
-      "content": "Coffee is the answer.",
-      "likes": 3,
+      "userId": "user_3",
+      "content": "Только что прошёл новую игру — отличный сюжет и графика! #gaming",
+      "likes": 5,
       "comments": [
         {
-          "id": "comment_3",
-          "userId": "user_1",
-          "content": "Totally agree!"
+          "id": "comment_4",
+          "userId": "user_5",
+          "content": "Совершенно согласен, одна из лучших игр года."
         }
       ]
     },
     {
       "id": "post_4",
-      "userId": "user_2",
-      "content": "Coffee is the answer.",
-      "likes": 3,
+      "userId": "user_4",
+      "content": "Мечтаю о поездке в Японию. Кто был в Токио? Поделитесь советами! #travel",
+      "likes": 8,
       "comments": [
         {
-          "id": "comment_3",
-          "userId": "user_1",
-          "content": "Totally agree!"
+          "id": "comment_5",
+          "userId": "user_3",
+          "content": "Был в прошлом году — обожаю район Асакуса!"
         }
       ]
     },
     {
       "id": "post_5",
-      "userId": "user_2",
-      "content": "Coffee is the answer.",
-      "likes": 3,
+      "userId": "user_5",
+      "content": "Новые фотографии природы в блоге. Заходите посмотреть! #photography",
+      "likes": 15,
       "comments": [
         {
-          "id": "comment_3",
-          "userId": "user_1",
-          "content": "Totally agree!"
+          "id": "comment_6",
+          "userId": "user_4",
+          "content": "Прекрасные кадры, особенно утренний туман."
         }
       ]
     }
@@ -179,13 +112,26 @@
     {
       "id": "post_2",
       "userId": "user_2",
-      "content": "Coffee is the answer.",
-      "likes": 3,
+      "content": "Записал новый трек сегодня вечером 🎶 Скоро выложу!",
+      "likes": 12,
       "comments": [
         {
           "id": "comment_3",
           "userId": "user_1",
-          "content": "Totally agree!"
+          "content": "Жду с нетерпением!"
+        }
+      ]
+    },
+    {
+      "id": "post_4",
+      "userId": "user_4",
+      "content": "Мечтаю о поездке в Японию. Кто был в Токио? Поделитесь советами! #travel",
+      "likes": 8,
+      "comments": [
+        {
+          "id": "comment_5",
+          "userId": "user_3",
+          "content": "Был в прошлом году — обожаю район Асакуса!"
         }
       ]
     }
@@ -193,30 +139,23 @@
   "search_results_users": [
     {
       "id": "user_3",
-      "username": "charlie",
+      "username": "Charlie Nguyen",
       "avatar": "https://example.com/avatar/charlie.jpg",
-      "bio": "Bookworm and gamer",
-      "following": [
-        "user_1"
-      ]
+      "bio": "Avid reader and gamer. Sharing book recommendations and game reviews.",
+      "following": ["user_1", "user_2"]
     }
   ],
   "search_results_posts": [
     {
-      "id": "post_1",
-      "userId": "user_1",
-      "content": "Just setting up my twttr.",
-      "likes": 10,
+      "id": "post_4",
+      "userId": "user_4",
+      "content": "Мечтаю о поездке в Японию. Кто был в Токио? Поделитесь советами! #travel",
+      "likes": 8,
       "comments": [
         {
-          "id": "comment_1",
-          "userId": "user_2",
-          "content": "Welcome!"
-        },
-        {
-          "id": "comment_2",
+          "id": "comment_5",
           "userId": "user_3",
-          "content": "Nice to see you here!"
+          "content": "Был в прошлом году — обожаю район Асакуса!"
         }
       ]
     }

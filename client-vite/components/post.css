@@ -1,0 +1,73 @@
+.post {
+    font-family: 'Tinkoff Sans', sans-serif;
+    border-radius: 8px;
+    /* background: #2563eb; */
+    display: flex;
+    flex-direction: column;
+    /* border: 1px solid #ccc; */
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+.post__icon {
+    padding-top: 2vh;
+}
+
+
+.post__title {
+    /* border: 1px solid black; */
+    padding-top: 2vh;
+    padding-left: 2vh;
+    /* padding: 2vh 2vw; */
+    display: flex;
+    flex: 1;
+}
+
+.post__body {
+    
+    padding: 2vh 2vw;
+    line-height: 1.6;
+}
+
+.post__footer {
+    display: flex
+;
+    align-items: center;
+    /* gap: 1rem; */
+    column-gap: 1rem;
+    padding: 0.75rem 1rem;
+    /* background: #f9fafb; */
+    border-radius: 8px;
+}
+
+.btn-like{
+    background-color: #FFDD2D;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    height: 5vh;
+    width: 71px;
+    /* color: #2563eb; */
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    column-gap: 8px;
+}
+
+.btn-comments{
+    display: inline-flex;
+    gap: 8px;
+    align-items: center;
+    height: 5vh;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    background-color: #f1f5f9;
+    color: #2563eb;
+    border: none;
+    border-radius: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+/* все стили posts и comment абстрагировать в  card что бы не привязываться к конкретике*/

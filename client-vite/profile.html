@@ -89,39 +89,7 @@
       </div>
     </form>
 
-    <template id="comment-template">
-      <div class="comment" style="margin-top: 6vh 0">
-        <h3 class="comment__title" style="padding-top: 0">
-          <img
-            src="/components/icons/seneka 1.svg"
-            alt="user icon"
-            class="comment__icon"
-          />
-          <slot name="title" class="comment__title"></slot>
-        </h3>
-        <div class="comment-body__container">
-          <p class="comment-body" style="font-size: 15px">
-            <!-- Луций философ‑стоик -->
-            <slot name="body" class="comment__body"></slot>
-          </p>
-          <button type="button" class="btn-delete">
-            <img src="/components/icons/icon.svg" />
-          </button>
-        </div>
 
-        <div class="comment__footer">
-          <button type="button" class="btn-like">
-            <img
-              src="/components/icons/Heart.svg"
-            />
-            <span class="count-like"><slot name="likesCount"></slot></span>
-          </button>
-          <button type="button" class="btn-comments" data-post-id="" onclick="location.href='comments.html'">
-            Комментарии<span class="btn-comments__count"><slot name="commentsCount"></slot></span>
-          </button>
-        </div>
-      </div>
-    </template>
     <div id="comments-container"></div>
   </body>
 </html>
