@@ -5,7 +5,10 @@
       "username": "alice",
       "avatar": "https://example.com/avatar/alice.jpg",
       "bio": "Frontend engineer",
-      "following": ["user_2", "user_3"]
+      "following": [
+        "user_2",
+        "user_3"
+      ]
     },
     {
       "id": "user_2",
@@ -19,9 +22,11 @@
       "username": "charlie",
       "avatar": "https://example.com/avatar/charlie.jpg",
       "bio": "Bookworm and gamer",
-      "following": ["user_1"]
+      "following": [
+        "user_1"
+      ]
     },
-        {
+    {
       "id": "user_4",
       "username": "Pavel",
       "avatar": "https://example.com/avatar/bob.jpg",
@@ -33,7 +38,9 @@
       "username": "Dima",
       "avatar": "https://example.com/avatar/charlie.jpg",
       "bio": "Bookworm and gamer",
-      "following": ["user_1"]
+      "following": [
+        "user_1"
+      ]
     }
   ],
   "posts": [
@@ -52,11 +59,110 @@
           "id": "comment_2",
           "userId": "user_3",
           "content": "Nice to see you here!"
+        },
+        {
+          "id": "comment_1753865964569",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865983886",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865985820",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865986336",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865986556",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865986719",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865986903",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865987103",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753865987336",
+          "userId": "User",
+          "content": "тоаотаот",
+          "avatar": "./svg"
+        },
+        {
+          "id": "comment_1753866487281",
+          "userId": "User",
+          "content": "dcs",
+          "avatar": "./svg"
         }
       ]
     },
     {
       "id": "post_2",
+      "userId": "user_2",
+      "content": "Coffee is the answer.",
+      "likes": 3,
+      "comments": [
+        {
+          "id": "comment_3",
+          "userId": "user_1",
+          "content": "Totally agree!"
+        }
+      ]
+    },
+    {
+      "id": "post_3",
+      "userId": "user_2",
+      "content": "Coffee is the answer.",
+      "likes": 3,
+      "comments": [
+        {
+          "id": "comment_3",
+          "userId": "user_1",
+          "content": "Totally agree!"
+        }
+      ]
+    },
+    {
+      "id": "post_4",
+      "userId": "user_2",
+      "content": "Coffee is the answer.",
+      "likes": 3,
+      "comments": [
+        {
+          "id": "comment_3",
+          "userId": "user_1",
+          "content": "Totally agree!"
+        }
+      ]
+    },
+    {
+      "id": "post_5",
       "userId": "user_2",
       "content": "Coffee is the answer.",
       "likes": 3,
@@ -90,7 +196,9 @@
       "username": "charlie",
       "avatar": "https://example.com/avatar/charlie.jpg",
       "bio": "Bookworm and gamer",
-      "following": ["user_1"]
+      "following": [
+        "user_1"
+      ]
     }
   ],
   "search_results_posts": [
@@ -114,4 +222,3 @@
     }
   ]
 }
-

@@ -1,27 +1,27 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 .header {
-    position: relative;
-    height: 64px;
-    background-color: #F6F7F8;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 100px;
-    
+  position: relative;
+  height: 64px;
+  background-color: #F6F7F8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  
 }
 
 .header::after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 200px);
-    background: linear-gradient(#0010241F 12%, transparent);
-    height: 1px;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 200px);
+  background: linear-gradient(#0010241F 12%, transparent);
+  height: 1px;
 }
 
 
@@ -29,12 +29,12 @@
 .guest-actions,
 .user-actions
 {
-    display: flex;
-    width: 100vw;
-    align-items: center;
+  display: flex;
+  width: 100vw;
+  align-items: center;
   justify-content: space-between; /* поиск слева, контейнер кнопок — справа */
-  gap: 16px;  
-    
+  gap: 16px;
+  
 }
 
 .guest-actions__container{
@@ -47,9 +47,9 @@
 
 
 .guest-actions__search{
-    flex: 1;
-    padding: 0 3vw;
-
+  flex: 1;
+  padding: 0 3vw;
+  
 }
 
 .guest-actions__search input {
@@ -65,22 +65,25 @@
 
 .guest-actions__auth {
   align-items: center;     /* выравнивание по центру по вертикали */
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
+
+.guest-actions__profile,
 .guest-actions__logout,
 .guest-actions__auth,
 .guest-actions__registration {
   display: inline-flex;
   align-items: center;
-  gap: 8px;                    
+  gap: 8px;
   background: none;
   border: none;
   cursor: pointer;
-  flex: 0 1 auto;      
+  flex: 0 1 auto;
   color: #0000008A;
 }
 
+.guest-actions__profile img,
 .guest-actions__logout img,
 .guest-actions__auth img,
 .guest-actions__registration img {
@@ -94,40 +97,58 @@
 /* ===== Tablet & мобильные ===== */
 @media (max-width: 768px) {
   .header {
-    padding: 0 16px;           /* убираем большие боковые отступы */
-    height: auto;              /* пусть будет по содержимому */
+    padding: 0 16px;
+    height: auto;
+    min-height: 64px; /* убираем большие боковые отступы */
   }
-
+  
   .logo{
-  transform: translate(20%, -50%);
-}
-
+    margin-right: auto;
+  }
+  
   .user-actions,
   .guest-actions {
     width: 100%;               /* займёт всю ширину */
     flex-direction: column-reverse;
     align-items: stretch;      /* растягиваем элементы по ширине */
     gap: 8px;                  /* чуть меньше отступы между блоками */
-    margin-top: 8px;           /* отступ под логотипом */
+    padding: 12px/* отступ под логотипом */
+  }
+  
+  .header:has(.user-actions) {
+    .logo {
+      transform: translateY(-20px);
+    }
+    /* убираем большие боковые отступы */
   }
 
+  .header:has(.guest-actions) {
+    .logo {
+      transform: translateY(-20px);
+    }
+    /* убираем большие боковые отступы */
+  }
+  .user-actions__search,
   .guest-actions__search {
     /* поиск теперь на всю ширину */
     flex: none;
-    width: 92%;
+    width: auto;
   }
-  .guest-actions__search input {
+  
+  .guest-actions__search, .guest-actions__search input {
     width: 100%;
     transform: translate(-5%);
   }
-
+  
   .guest-actions__container {
+    
     /* кнопки в ряд, но по краям */
     /* flex-direction: row;
     justify-content: space-between; */
-
+    
+    
   }
-
+  
   .guest-actions__auth,
   .guest-actions__registretion {
     /* кнопки растягиваются, но остаются читаемыми */
@@ -135,39 +156,10 @@
     font-size: 14px;           /* чуть меньше шрифт */
     padding: 8px 12px;         /* подогнано под мобильные пальцы */
   }
-
+  
   .guest-actions__auth img,
   .guest-actions__registretion img {
     width: 14px;
     height: 14px;
   }
 }
-
-/* ===== Настройка ещё более узких экранов ===== */
-@media (max-width: 480px) {
-  .guest-actions__container {
-    /* на совсем узких экранах можно показывать только иконки */
-    gap: 4px;
-  }
-
-  .guest-actions__auth,
-  .guest-actions__registretion {
-    /* прячем текст и оставляем только SVG (если нужно) */
-    font-size: 0;              /* текст «схлопнется» */
-    padding: 8px;              
-  }
-  /* .guest-actions__auth::before {
-    content: "Рег.";           
-    font-size: 12px;
-    margin-right: 4px;
-  } */
-  .guest-actions__registretion::before {
-    content: "Войти";
-    font-size: 12px;
-    margin-right: 4px;
-  }
-}
-
-
-
-

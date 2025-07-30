@@ -63,7 +63,7 @@ export async function renderHeader(selector = '#header', onSearchInput = ()=> nu
   const userBlock  = container.querySelector('.user-actions');
   const buttonLogout = container.querySelector(".guest-actions__logout");
   const buttonAuth = container.querySelector(".guest-actions__auth")
-  const searchElement = document.getElementById("search-auth")
+  // const searchElement = document.getElementById("search-auth")
 
 
   // 3. Определяем, на какой мы странице
@@ -81,7 +81,7 @@ export async function renderHeader(selector = '#header', onSearchInput = ()=> nu
 
 
   addEventHeaderButtons(buttonLogout, buttonAuth);
-  addEventHeaderSearch(searchElement,onSearchInput);
+  // addEventHeaderSearch(searchElement,onSearchInput);
   renderHeaderContent(guestBlock, userBlock, isAuthPage, isMainNoAuth, isProfilePage);
 
   return searchElement;
