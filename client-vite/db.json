@@ -1,5 +1,15 @@
 {
   "users": [
+        {
+      "id": "user_0",
+      "username": "Oleg777",
+      "avatar": "https://example.com/avatar/seneca.jpg",
+      "bio": "мир это красота …",
+      "following": [
+        "user_2",
+        "user_3"
+      ]
+    },
     {
       "id": "user_1",
       "username": "Луций Анней Сенека",
