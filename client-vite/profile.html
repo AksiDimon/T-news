@@ -6,25 +6,13 @@
     <title>Profile</title>
     <link rel="stylesheet" href="/components/styles.css" />
     <script type="module" src="/pages/profile/profile.js"></script>
-    <script type="module" src="/components/header.js"></script>
     <link rel="stylesheet" href="/components/header.css" />
+    <link rel="stylesheet" href="/components/post.css"/>
     <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
     <link rel="stylesheet" href="/pages/profile/profile.css" />
   </head>
   <body>
     <div id="header"></div>
-    <!-- <div>
-        <div>
-            Photo
-            change photo
-        </div>
-        <div>
-            <div>
-                header, change header
-            </div>
-            <div> description, change description </div>
-        </div>
-    </div> -->
     <div class="profile">
       <aside class="profile__sidebar">
         <div class="profile__avatar">
@@ -89,7 +77,6 @@
       </div>
     </form>
 
-
-    <div id="comments-container"></div>
+    <div id="posts-container" class="profile__comments"></div>
   </body>
 </html>

@@ -4,36 +4,49 @@
       "id": "user_1",
       "username": "Луций Анней Сенека",
       "avatar": "https://example.com/avatar/seneca.jpg",
-      "bio": "Обо мне: римский философ-стоик, поэт и государственный деятель. Воспитатель Нерона и один из крупнейших представителей стоицизма. Сын Луция (Марка) Аннея Сенеки Старшего…",
-      "following": ["user_2", "user_3"]
+      "bio": "Обо мне: римский философ‑стоик, поэт и государственный деятель.\n            Воспитатель Нерона и один из крупнейших представителей стоицизма.\n            Сын Луция (Марка) Аннея Сенеки Старшего …",
+      "following": [
+        "user_2",
+        "user_3"
+      ]
     },
     {
       "id": "user_2",
       "username": "Bob Smith",
       "avatar": "https://example.com/avatar/bob.jpg",
       "bio": "Coffee enthusiast and musician. Always exploring new sounds and rhythms.",
-      "following": ["user_1"]
+      "following": [
+        "user_1"
+      ]
     },
     {
       "id": "user_3",
       "username": "Charlie Nguyen",
       "avatar": "https://example.com/avatar/charlie.jpg",
       "bio": "Avid reader and gamer. Sharing book recommendations and game reviews.",
-      "following": ["user_1", "user_2"]
+      "following": [
+        "user_1",
+        "user_2"
+      ]
     },
     {
       "id": "user_4",
       "username": "Pavel Ivanov",
       "avatar": "https://example.com/avatar/pavel.jpg",
       "bio": "UX designer and world traveler. Exploring cultures one city at a time.",
-      "following": ["user_3"]
+      "following": [
+        "user_3"
+      ]
     },
     {
       "id": "user_5",
       "username": "Dmitry Petrov",
       "avatar": "https://example.com/avatar/dmitry.jpg",
       "bio": "Photographer and blogger. Capturing moments through the lens.",
-      "following": ["user_1", "user_4"]
+      "following": [
+        "user_1",
+        "user_4"
+      ]
     }
   ],
   "posts": [
@@ -41,7 +54,7 @@
       "id": "post_1",
       "userId": "user_1",
       "content": "Сегодня читаю лекцию о стоицизме. Какие ваши любимые философы? #stoicism",
-      "likes": 25,
+      "likes": 36,
       "comments": [
         {
           "id": "comment_1",
@@ -142,7 +155,10 @@
       "username": "Charlie Nguyen",
       "avatar": "https://example.com/avatar/charlie.jpg",
       "bio": "Avid reader and gamer. Sharing book recommendations and game reviews.",
-      "following": ["user_1", "user_2"]
+      "following": [
+        "user_1",
+        "user_2"
+      ]
     }
   ],
   "search_results_posts": [

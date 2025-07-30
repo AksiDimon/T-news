@@ -1,6 +1,7 @@
-import { renderHeader } from '/components/header.js';
-renderHeader();
+import { renderHeader } from '../../components/header.js';
+import { insertPost } from '../../components/post.js';
 
+renderHeader();
 // Получаем узлы один раз
 const commentTmpl = document.getElementById('comment-template');
 const form = document.getElementById('comment-form');
@@ -102,7 +103,7 @@ document.querySelectorAll(EDITABLE_SELECTOR).forEach(icon => {
 //Логика отправки коментов --------------
 form.addEventListener('submit', sendComment);
 
-function sendComment(e) {
+async function sendComment(e) {
   e.preventDefault();
 
   const text = textarea.value.trim();
@@ -110,37 +111,15 @@ function sendComment(e) {
 
   // здесь формируем «данные» комментария
   const commentData = {
-    name: 'User', // у вас может быть своё имя
-    body: text,
+    userId: 'User', // у вас может быть своё имя
+    content: text,
   };
 
   // рендерим новый комментарий и добавляем в контейнер
-  const commentNode = renderComment(commentData);
-  commentsCont.appendChild(commentNode);
+  await insertPost(commentData, "#posts-container");
 
   textarea.value = ''; // чистим поле
   textarea.focus();
-}
-
-function renderComment({ name, body }) {
-  // клонируем содержимое <template>
-  const clone = commentTmpl.content.cloneNode(true);
-
-  // находим в клоне наши «слоты»
-  const titleSlot = clone.querySelector('slot[name="title"]');
-  const bodySlot = clone.querySelector('slot[name="body"]');
-
-  // вставляем текст в нужные места
-  titleSlot.textContent = name;
-  bodySlot.textContent = body;
-
-  const btnLike = clone.querySelector('.btn-like');
-  btnLike.addEventListener('click', handleLike);
-
-    const btnDelete = clone.querySelector('.btn-delete');
-  btnDelete.addEventListener('click', deleteComment);
-  // возвращаем полноценный DocumentFragment
-  return clone;
 }
 
 function handleLike(e) {

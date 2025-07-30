@@ -8,23 +8,29 @@
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 .post__icon {
-    padding-top: 2vh;
+    margin-right: 10px;
 }
-
+ 
 
 .post__title {
-    /* border: 1px solid black; */
     padding-top: 2vh;
     padding-left: 2vh;
-    /* padding: 2vh 2vw; */
     display: flex;
+    align-items: center;
     flex: 1;
 }
 
 .post__body {
-    
     padding: 2vh 2vw;
     line-height: 1.6;
+
+    img { 
+        margin-left: 10px;
+        transition: 0.3s ease; 
+       &:hover {
+        transform: scale(1.2);
+       }        
+    }
 }
 
 .post__footer {

@@ -1,22 +1,23 @@
 <template id="post-template">
-        <div class="post">
-          
-          <h3 class="post__title">    
-                   <img src="/components/icons/seneka 1.svg" alt="user icon" class="post__icon" />
-            <slot name="title" class="post__title"></slot>
-          </h3>
-            <p class="post__body"> <slot name="body" class="post__body"></slot></p>
-          <div class="post__footer">
-            <button type="button" class="btn-like">
-              <img
-                src="/components/icons/Heart.svg"
-              />
-              <span class="count-like"><slot name="likes" ></slot></span>
-            </button>
-            <button type="button" class="btn-comments" >
-              Комментарии<span class="btn-posts__count"><slot name="postsCount" ></slot></span>
-            </button>
-          </div>
-        </div>
+  <div class="post">
+      <h3 class="post__title">
+          <img src="/components/icons/seneka 1.svg" alt="user icon" class="post__icon" />
+          <span class="post__title-text"></span>
+      </h3>
 
-      </template>
+      <p class="post__body">
+          <span class="post__body-text"></span>
+          <img src="/components/icons/delete.svg" style="display:none"/>
+      </p>
+
+      <div class="post__footer">
+          <button type="button" class="btn-like">
+              <img src="/components/icons/Heart.svg"/>
+              <span class="count-like">0</span>
+          </button>
+          <button type="button" class="btn-comments">
+              Комментарии <span class="btn-posts__count">0</span>
+          </button>
+      </div>
+  </div>
+</template>

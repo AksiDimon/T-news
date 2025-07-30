@@ -161,13 +161,14 @@ textarea:focus {
   transform: translateY(-2px);
 }
 
-.comment {
+.profile__comments {
   margin: 0 auto;
   max-width: 900px;
   margin-top: 5vh;
   border-radius: 22px;
   width: 90vw;
 }
+
 .comment-body {
   padding: 2vh 0;
 }
