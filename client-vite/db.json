@@ -2,9 +2,9 @@
   "users": [
     {
       "id": "user_0",
-      "username": "Олег",
+      "username": "Олег Ю́рьевич",
       "avatar": "https://example.com/avatar/seneca.jpg",
-      "bio": "мир это красота …",
+      "bio": "Я скульптор мыслей в мире 280 символов.\n Кодирую идеи и превращаю строки в эмоции.\n На каждой новой ленте ищу искру вдохновения и делюсь ею с вами …",
       "following": [
         "user_2",
         "user_3"
@@ -131,17 +131,10 @@
       ]
     },
     {
-      "id": "f339",
+      "id": "038d",
       "userId": "user_0",
-      "content": "njnjnnjn",
-      "likes": 3,
-      "comments": []
-    },
-    {
-      "id": "3b76",
-      "userId": "user_0",
-      "content": "swwsws",
-      "likes": 0,
+      "content": "Краткость - сестра таланта, и медсестра бездарности.",
+      "likes": 1,
       "comments": []
     }
   ],

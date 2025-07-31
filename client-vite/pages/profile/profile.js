@@ -6,6 +6,8 @@ import {SERVER_URL} from "../../consts";
 renderHeader();
 
 // Основные элементы
+const usernameEl = document.querySelector('.profile__username');
+const bioEl      = document.querySelector('.profile__bio-text');
 const form = document.getElementById('comment-form');
 const textarea = document.getElementById('story');
 const postsContainer = document.querySelector('#posts-container');
@@ -22,6 +24,23 @@ subscribeBtn?.addEventListener('click', () => {
     ? 'Отписаться'
     : 'Подписаться';
 });
+
+// --- Загрузка данных профиля ---
+async function loadProfile() {
+  try {
+    const res  = await fetch(`${apiBase}/${userId}`);
+    if (!res.ok) throw new Error(res.statusText);
+    const user = await res.json();
+
+    // Подставляем в DOM
+    usernameEl.textContent = user.username;
+    bioEl.textContent      = user.bio;
+    // avatarImg.src          = user.avatar || '/components/icons/default-avatar.svg';
+  } catch (err) {
+    console.error('Не удалось загрузить профиль:', err);
+  }
+}
+
 
 // Редактирование аватара
 editPhotoBtn?.addEventListener('click', () => avatarInput.click());
@@ -156,4 +175,5 @@ async function loadPosts() {
   }
 }
 
+loadProfile()
 loadPosts();
