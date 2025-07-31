@@ -37,7 +37,7 @@ function renderComment(comment) {
   const btnDelete = frag.querySelector('.btn-delete');
   btnDelete.addEventListener('click', deleteComment);
 
-    if(comment.userId !== 'User') {
+    if(comment.userId !== 'User_0') {
       console.log('1+')
       btnDelete.remove()
     } else {
@@ -107,31 +107,26 @@ loadPost();
 
 function sendComment(e) {
   e.preventDefault();
-  // const form = querySelector("#form");
-  // const formData = new FormData(form);
-  // const data = Object.fromEntries(formData.entries());
-  // console.log(data);// value from textarea;
+
   const textarea = document.getElementById('story');
-  
   const text = textarea.value.trim();
-  console.log(textarea, '💕', text)
-  if(!text) return 
+
+  if (!text) return;
 
   const comment = {
-   userId: 'User_0',
-   content: text,
-    avatar: "./svg",
-  }
+    userId: 'User_0',
+    content: text,
+    avatar: './svg',
+  };
 
   const commentNode = renderComment(comment);
   commentsContainerElement.appendChild(commentNode);
 
-    // **Обновляем счётчик комментариев**
+  textarea.value = '';
+
   const countSpan = postContainerElement.querySelector('.btn-comments__count');
   const current = Number(countSpan.textContent.trim()) || 0;
   countSpan.textContent = current + 1;
-
-  textarea.value = '';
 }
 const btnSendComment = document.getElementById("comment-form")
 console.log(btnSendComment);
@@ -139,28 +134,3 @@ btnSendComment.addEventListener("submit", sendComment)
 
 
 
-
-
-
-    // (function() {
-    //   const form = document.getElementById('comment-form');
-    //   const input = document.getElementById('comment-input');
-    //   const commentsContainer = document.getElementById('comments-container');
-    //   const tpl = document.getElementById('comment-template').content;
-
-    //   form.addEventListener('submit', e => {
-    //     e.preventDefault();
-    //     const text = input.value.trim();
-    //     if (!text) return;
-
-    //     // клонируем ваш шаблон и вставляем текст
-    //     const node = document.importNode(tpl, true);
-    //     node.querySelector('slot[name="body"]').textContent = text;
-    //     // можно проставить имя текущего пользователя:
-    //     node.querySelector('slot[name="title"]').textContent = 'Вы';
-
-    //     commentsContainer.appendChild(node);
-    //     input.value = '';
-    //     input.focus();
-    //   });
-    // })();
