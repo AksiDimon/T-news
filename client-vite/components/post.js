@@ -73,7 +73,9 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
     });
   }
 
-  frag.querySelector('.post__title-text').textContent = post.userId;
+  const user = await loadUser(post.userId);
+
+  frag.querySelector('.post__title-text').textContent = user.username;
   frag.querySelector('.post__body-text').textContent = post.content;
 
   if (post.likes) {
@@ -120,6 +122,22 @@ export async function deletePost(postId) {
 
   return await res.json();
 }
+
+export async function loadUser(userId) {
+  const res = await fetch(`${SERVER_URL}/users/${userId}`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('Не удалось обновить лайки');
+  }
+
+  return await res.json();
+}
+
 
 
 
