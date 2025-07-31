@@ -7,19 +7,15 @@
   padding: 2rem 4rem 3rem 4rem;
   flex-wrap: wrap;
   width: 90vw;
-  max-width: 900px; 
+  max-width: 900px;
   margin: 0 auto;
 }
-
-
-
 
 .profile__sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
-
 }
 .profile__avatar {
   width: 120px;
@@ -43,16 +39,14 @@
   border: none;
 }
 
-
 .profile__main {
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-
 }
 
-      /* шапка с заголовком и кнопкой «Подписаться» */
+/* шапка с заголовком и кнопкой «Подписаться» */
 .profile__header {
   display: flex;
   align-items: center;
@@ -74,11 +68,10 @@
   border-radius: 8px;
   background-color: white;
   color: #428bf9;
-   width: 115px;
+  width: 115px;
 }
 
-
-      /* блок «Обо мне» */
+/* блок «Обо мне» */
 .profile__bio {
   display: flex;
   align-items: center;
@@ -93,26 +86,25 @@
   line-height: 1.7rem;
 }
 
-      /* коменты  */
+/* коменты  */
 .post-form {
-
   display: flex;
   flex-direction: column;
-  gap: 1rem; 
+  gap: 1rem;
   width: 90vw;
-  max-width: 900px; 
+  max-width: 900px;
   margin: 0 auto;
   padding: 1rem 0;
   box-sizing: border-box;
 }
 
-      /* поле ввода */
+/* поле ввода */
 .post-form__textarea {
   width: 100%;
-  min-height: 12vh; 
+  min-height: 12vh;
   padding: 1rem 1.5rem;
   border: none;
-  border-radius: 1rem; 
+  border-radius: 1rem;
   background-color: #f1f5f9;
   font-size: 1rem;
   line-height: 1.4;
@@ -140,14 +132,16 @@ textarea:focus {
 /* сама кнопка */
 .post-form__send-btn {
   padding: 0.75rem 1.5rem;
-  background-color: #FFDD2D;;
+  background-color: #ffdd2d;
   color: #1f2937;
   border: none;
   border-radius: 0.5rem;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
 }
 
 /* ховер‑эффект */
@@ -176,7 +170,9 @@ textarea:focus {
   line-height: 1.3rem;
 }
 .btn-delete {
-  transition: transform 0.3s ease, background-color 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
   border: none;
   background: none;
   display: flex;
@@ -191,14 +187,14 @@ textarea:focus {
     padding: 0.5rem;
   }
 }
-@media(max-width: 440px) {
-  .profile__title{
-      align-items: first baseline;
+@media (max-width: 440px) {
+  .profile__title {
+    align-items: first baseline;
   }
 }
 
-@media(max-width: 680px) {
-  .profile__bio{
+@media (max-width: 680px) {
+  .profile__bio {
     max-width: 80vw;
   }
 }

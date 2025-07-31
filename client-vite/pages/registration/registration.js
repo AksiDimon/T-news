@@ -33,8 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      window.location.href = "/auth.html"
-
+      window.location.href = '/auth.html';
     } catch (error) {
       console.error('Error:', error);
       alert('Ошибка при регистрации. Попробуйте снова.');

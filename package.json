@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "lint": "eslint . --ext .js,.css",
+    "format": "prettier --write \"**/*.{js,css,html,md,json}\""
+  },
   "devDependencies": {
     "prettier": "^3.6.2"
   }

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,12 +6,11 @@
     <title>Document</title>
     <link rel="stylesheet" href="/components/header.css" />
     <link rel="stylesheet" href="/components/styles.css" />
-    <script type="module" src="/pages/searchUsers/searchUsers.js" ></script>
+    <script type="module" src="/pages/searchUsers/searchUsers.js"></script>
 
-    <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css"/>
+    <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css" />
   </head>
-  <style>
-  </style>
+  <style></style>
   <body>
     <div id="header"></div>
     <!-- HTML -->
@@ -21,7 +20,12 @@
         <button class="toggle-nav__btn toggle-nav__btn--active">
           Пользователи
         </button>
-        <button class="toggle-nav__btn" onclick="location.href='searchPosts.html'">Посты</button>
+        <button
+          class="toggle-nav__btn"
+          onclick="location.href='searchPosts.html'"
+        >
+          Посты
+        </button>
       </nav>
 
       <!-- 2. Список пользователей с аватарками и радиокнопками -->
@@ -34,7 +38,6 @@
             <div class="user-item__name"><slot name="username"></slot></div>
           </li>
         </template>
-        
 
         <!-- <li class="user-list__item">
           <div class="user-item__avatar">

@@ -1,19 +1,19 @@
-import { SERVER_URL } from '../consts.js' 
+import { SERVER_URL } from '../consts.js';
 
 const path = window.location.pathname;
-const isProfilePage = path === '/profile.html'
+const isProfilePage = path === '/profile.html';
 
-const arrayLikes = []
+const arrayLikes = [];
 
 export async function loadCardTemplate() {
   const res = await fetch('components/post.html'); // путь к шаблону
   return await res.text();
 }
 
-export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
+export async function insertPost(post, targetSelector, btnCommentsStyle = '') {
   const templateHTML = await loadCardTemplate();
 
-  console.log(post, targetSelector)
+  console.log(post, targetSelector);
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(templateHTML, 'text/html');
@@ -33,15 +33,14 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
 
   btnLike.addEventListener('click', async () => {
     try {
+      if (arrayLikes.find((like) => like.postId === post.id)) {
+        return;
+      }
 
-         if(arrayLikes.find((like) => like.postId === post.id )) {
-            return
-        }
-
-        currentLikes += 1;
-        arrayLikes.push({
-            postId: post.id,
-        })
+      currentLikes += 1;
+      arrayLikes.push({
+        postId: post.id,
+      });
       likeCountElem.textContent = currentLikes;
 
       await updateLikes(post.id, currentLikes);
@@ -51,17 +50,18 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
       likeCountElem.textContent = currentLikes;
     }
   });
-  
+
   const btnComments = frag.querySelector('.btn-comments');
   btnComments.style = btnCommentsStyle;
-  
-  btnComments.addEventListener("click", ()=> {
-    window.location.href = `/comments.html?postId=${post.id}`})
+
+  btnComments.addEventListener('click', () => {
+    window.location.href = `/comments.html?postId=${post.id}`;
+  });
   const postElem = frag.querySelector('.post');
 
   if (isProfilePage) {
     const deleteButton = frag.querySelector('.post__body img');
-    deleteButton.style = "display:inline;";
+    deleteButton.style = 'display:inline;';
     deleteButton.addEventListener('click', async () => {
       try {
         await deletePost(post.id);
@@ -90,7 +90,6 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
     target.appendChild(frag);
   }
 }
-
 
 export async function updateLikes(postId, newLikes) {
   const res = await fetch(`${SERVER_URL}/posts/${postId}`, {
@@ -137,12 +136,3 @@ export async function loadUser(userId) {
 
   return await res.json();
 }
-
-
-
-
-
-
-
-
-

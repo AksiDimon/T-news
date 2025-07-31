@@ -1,78 +1,77 @@
+.search-user {
+  padding: 4rem;
+  width: 90vw;
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-    .search-user {
-      padding: 4rem;
-      width: 90vw;
-      max-width: 900px; 
-      margin: 0 auto; 
-    }
+@media (max-width: 400px) {
+  .search-user {
+    padding: 1rem;
+  }
+}
 
-    @media (max-width: 400px) {
-      .search-user {
-        padding: 1rem;
-      }
-    }
+/* 1. Навигация-тогглер */
+.toggle-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.toggle-nav__btn {
+  background: white;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid #f1f5f9;
+  transition: border 0.3s ease;
+}
 
-    /* 1. Навигация-тогглер */
-    .toggle-nav {
-      display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-    }
-    .toggle-nav__btn {
-      background: white;
-      padding: 0.5rem 1rem;
-      cursor: pointer;
-      border-radius: 8px;
-      border: 1px solid #f1f5f9;
-      transition: border 0.3s ease;
-    }
+.toggle-nav__btn:hover {
+  background-color: #f1f5f9;
+  border: 1px solid #ffdd2d;
+}
+.toggle-nav__btn--active {
+  border-color: gold;
+}
 
-    .toggle-nav__btn:hover {
-      background-color: #f1f5f9;
-      border: 1px solid #ffdd2d;
-    }
-    .toggle-nav__btn--active {
-      border-color: gold;
-    }
+/* 2. Список */
+.user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.user-list__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem;
+}
 
-    /* 2. Список */
-    .user-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .user-list__item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.75rem;
-    }
+/* Аватарка */
+.user-item__avatar {
+  /* border: 1px solid black; */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+.user-item__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    /* Аватарка */
-    .user-item__avatar {
-      /* border: 1px solid black; */
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      overflow: hidden;
-      margin-right: 1rem;
-    }
-    .user-item__avatar img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+/* Имя */
+.user-item__name {
+  /* border: 1px solid black; */
+  flex: 1;
+  font-family: 'Tinkoff Sans', sans-serif;
+  font-weight: 800;
+}
 
-    /* Имя */
-    .user-item__name {
-      /* border: 1px solid black; */
-      flex: 1;
-      font-family: 'Tinkoff Sans', sans-serif;
-      font-weight: 800;
-    }
-
-    /* Радио-контроль */
-    .user-item__control {
-      /* border: 1px solid black; */
-      margin-left: 1rem;
-    }
+/* Радио-контроль */
+.user-item__control {
+  /* border: 1px solid black; */
+  margin-left: 1rem;
+}

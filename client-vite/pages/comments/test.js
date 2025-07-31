@@ -14,34 +14,41 @@ const state = {
   comments: [],
   loading: false,
   error: null,
-  tempCommentId: null
+  tempCommentId: null,
 };
 
 // Сервис для работы с API
 const apiService = {
   async getPost(postId) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}`);
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}`
+    );
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.json();
   },
 
   async getComments(postId) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}/comments`
+    );
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.json();
   },
 
   async addComment(postId, comment) {
-    const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`, {
-      method: 'POST',
-      body: JSON.stringify(comment),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
+    const res = await fetch(
+      `https://jsonplaceholder.typicode.com/posts/${postId}/comments`,
+      {
+        method: 'POST',
+        body: JSON.stringify(comment),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }
+    );
     if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
     return res.json();
-  }
+  },
 };
 
 // Сервис рендеринга
@@ -51,7 +58,7 @@ const renderService = {
 
   renderPost(post) {
     if (!post) return document.createDocumentFragment();
-    
+
     const frag = this.postTemplate.content.cloneNode(true);
     frag.querySelector('slot[name="title"]').textContent = post.title;
     frag.querySelector('slot[name="body"]').textContent = post.body;
@@ -84,7 +91,7 @@ const renderService = {
       <button class="retry-btn">Try Again</button>
     `;
     return errorEl;
-  }
+  },
 };
 
 // Обновление состояния и перерисовка
@@ -121,12 +128,13 @@ function renderApp() {
   // Рендеринг комментариев
   if (state.comments.length > 0) {
     const fragment = document.createDocumentFragment();
-    state.comments.forEach(comment => {
+    state.comments.forEach((comment) => {
       fragment.appendChild(renderService.renderComment(comment));
     });
     commentsContainerElement.appendChild(fragment);
   } else if (state.post) {
-    commentsContainerElement.innerHTML = '<p class="no-comments">No comments yet. Be the first!</p>';
+    commentsContainerElement.innerHTML =
+      '<p class="no-comments">No comments yet. Be the first!</p>';
   }
 }
 
@@ -134,23 +142,22 @@ function renderApp() {
 async function loadData(postId) {
   try {
     updateState({ loading: true, error: null });
-    
+
     const [post, comments] = await Promise.all([
       apiService.getPost(postId),
-      apiService.getComments(postId)
+      apiService.getComments(postId),
     ]);
-    
-    updateState({ 
-      post, 
+
+    updateState({
+      post,
       comments,
-      loading: false 
+      loading: false,
     });
-    
   } catch (error) {
     console.error('Data loading failed:', error);
-    updateState({ 
+    updateState({
       error: 'Failed to load data. Please try again later.',
-      loading: false 
+      loading: false,
     });
   }
 }
@@ -158,63 +165,62 @@ async function loadData(postId) {
 // Отправка комментария
 async function sendComment(e) {
   e.preventDefault();
-  
+
   const formData = new FormData(e.target);
   const commentText = formData.get('comment').trim();
-  
+
   if (!commentText) return;
-  
+
   const urlParams = new URLSearchParams(window.location.search);
-  const postId = urlParams.get("postId");
-  
+  const postId = urlParams.get('postId');
+
   if (!postId) {
     updateState({ error: 'Post ID is missing' });
     return;
   }
-  
+
   try {
     // Создаем временный комментарий для оптимистичного UI
     const tempComment = {
       id: `temp-${Date.now()}`,
-      name: "You",
+      name: 'You',
       body: commentText,
-      email: ""
+      email: '',
     };
-    
+
     updateState({
       comments: [tempComment, ...state.comments],
-      tempCommentId: tempComment.id
+      tempCommentId: tempComment.id,
     });
-    
+
     // Отправка на сервер
     const newComment = {
       postId: parseInt(postId),
-      name: "Current User",
-      email: "user@example.com",
-      body: commentText
+      name: 'Current User',
+      email: 'user@example.com',
+      body: commentText,
     };
-    
+
     const savedComment = await apiService.addComment(postId, newComment);
-    
+
     // Заменяем временный комментарий на постоянный
     updateState({
-      comments: state.comments.map(comment => 
+      comments: state.comments.map((comment) =>
         comment.id === state.tempCommentId ? savedComment : comment
       ),
-      tempCommentId: null
+      tempCommentId: null,
     });
-    
+
     // Сбрасываем форму
     e.target.reset();
-    
   } catch (error) {
     console.error('Comment submission failed:', error);
-    
+
     // Откатываем UI при ошибке
     updateState({
-      comments: state.comments.filter(c => c.id !== state.tempCommentId),
+      comments: state.comments.filter((c) => c.id !== state.tempCommentId),
       tempCommentId: null,
-      error: 'Failed to post comment. Please try again.'
+      error: 'Failed to post comment. Please try again.',
     });
   }
 }
@@ -222,18 +228,18 @@ async function sendComment(e) {
 // Инициализация приложения
 function initApp() {
   renderHeader();
-  
+
   const urlParams = new URLSearchParams(window.location.search);
-  const postId = urlParams.get("postId");
-  
+  const postId = urlParams.get('postId');
+
   if (!postId) {
-    updateState({ error: "Post ID is missing in URL" });
+    updateState({ error: 'Post ID is missing in URL' });
     return;
   }
-  
+
   // Настройка обработчиков
   commentFormElement.addEventListener('submit', sendComment);
-  
+
   // Загрузка данных
   loadData(postId);
 }

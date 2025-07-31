@@ -1,11 +1,10 @@
-   .post-container,
-   .comment-container {
-    padding-top: 10vh;
-    display: flex;
-    flex-direction: column;
-    width: 70vw;
-    max-width: 800px;
-    margin: 2rem auto;
-    background: #fff;
-      }
-
+.post-container,
+.comment-container {
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  width: 70vw;
+  max-width: 800px;
+  margin: 2rem auto;
+  background: #fff;
+}

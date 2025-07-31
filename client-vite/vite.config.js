@@ -13,7 +13,7 @@ export default defineConfig({
         comments: 'comments.html',
         profile: 'profile.html',
         searchUsers: 'searchUsers.html',
-        searchPosts: 'searchPosts.httml'
+        searchPosts: 'searchPosts.httml',
       },
     },
   },

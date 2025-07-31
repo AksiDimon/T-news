@@ -1,13 +1,13 @@
-import { SERVER_URL } from "../../consts";
-import { renderHeader } from "../../components/header.js";
+import { SERVER_URL } from '../../consts';
+import { renderHeader } from '../../components/header.js';
 
 function handleSearch(text) {
-    console.log(text);
-    const filtered = filterUsers(text);
-    renderUserList(filtered);
+  console.log(text);
+  const filtered = filterUsers(text);
+  renderUserList(filtered);
 }
 
-renderHeader("#header", handleSearch);
+renderHeader('#header', handleSearch);
 
 const userContainer = document.getElementById('user-container');
 const userTmpl = document.getElementById('user-template');
@@ -22,18 +22,18 @@ function renderUser(user) {
 }
 
 function renderUserList(users) {
-  userContainer.innerHTML = ""; 
-  users.forEach(user => {
+  userContainer.innerHTML = '';
+  users.forEach((user) => {
     userContainer.appendChild(renderUser(user));
   });
 }
 
 async function loadUsers() {
   const usersReq = await fetch(`${SERVER_URL}/users`);
-  allUsers = await usersReq.json(); 
+  allUsers = await usersReq.json();
   // фильтрация по ?q если есть
   const urlParams = new URLSearchParams(window.location.search);
-  const searchString = urlParams.get("q") || "";
+  const searchString = urlParams.get('q') || '';
 
   const filtered = filterUsers(searchString);
   renderUserList(filtered);
@@ -41,7 +41,7 @@ async function loadUsers() {
 
 function filterUsers(search) {
   if (!search) return allUsers;
-  return allUsers.filter(user =>
+  return allUsers.filter((user) =>
     user.username.toLowerCase().includes(search.toLowerCase())
   );
 }

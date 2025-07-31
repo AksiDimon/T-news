@@ -6,13 +6,12 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: #F8FAFC;
-  color: #1F2937;
+  background: #f8fafc;
+  color: #1f2937;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
-
 
 /* Контейнер для карточки по центру */
 .container {
@@ -24,7 +23,7 @@ body {
 
 /* Сама карточка */
 .card {
-  background: #FFFFFF;
+  background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
   padding: 40px 32px;
@@ -47,9 +46,9 @@ body {
   padding: 12px 16px;
   border: none;
   border-radius: 8px;
-  background: #F1F5F9;
+  background: #f1f5f9;
   font-size: 16px;
-  color: #1F2937;
+  color: #1f2937;
 }
 
 .card .buttons {

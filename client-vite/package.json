@@ -5,9 +5,7 @@
     "dev": "vite",
     "mock-server": "json-server --watch db.json --port 3000",
     "build": "vite build",
-    "preview": "vite preview",
-        "lint": "eslint . --ext .js,.css",
-    "format": "prettier --write \"**/*.{js,css,html,md,json}\""
+    "preview": "vite preview"
   },
   "devDependencies": {
     "json-server": "^0.9.6",

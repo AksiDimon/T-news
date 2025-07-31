@@ -1,34 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Регистрация</title>
-  <link rel="stylesheet" href="/components/header.css" />
-  <link rel="stylesheet" href="/components/buttons.css" />
-  <link rel="stylesheet" href="/pages/registration/registration.css" />
-  <script type="module" src="/pages/registration/registration.js"></script>
-
-</head>
-<body>
-<div id="header"></div>
-<div class="container">
-  <form class="card" id="registration-form">
-    <h1>Регистрация</h1>
-    <div class="field">
-      <input name="login" type="text" placeholder="Логин" required />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="/components/header.css" />
+    <link rel="stylesheet" href="/components/buttons.css" />
+    <link rel="stylesheet" href="/pages/registration/registration.css" />
+    <script type="module" src="/pages/registration/registration.js"></script>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div class="container">
+      <form class="card" id="registration-form">
+        <h1>Регистрация</h1>
+        <div class="field">
+          <input name="login" type="text" placeholder="Логин" required />
+        </div>
+        <div class="field">
+          <input
+            name="password"
+            type="password"
+            placeholder="Пароль"
+            required
+          />
+        </div>
+        <div class="field">
+          <input
+            name="confirmPassword"
+            type="password"
+            placeholder="Повторите пароль"
+            required
+          />
+        </div>
+        <div class="buttons">
+          <button class="btn btn-secondary" id="user-auth" type="button">
+            Войти
+          </button>
+          <button class="btn btn-primary" type="submit" id="user-reg">
+            Зарегистрироваться
+          </button>
+        </div>
+      </form>
     </div>
-    <div class="field">
-      <input name="password" type="password" placeholder="Пароль" required />
-    </div>
-    <div class="field">
-      <input name="confirmPassword" type="password" placeholder="Повторите пароль" required />
-    </div>
-    <div class="buttons">
-      <button class="btn btn-secondary" id="user-auth" type="button">Войти</button>
-      <button class="btn btn-primary" type="submit" id="user-reg">Зарегистрироваться</button>
-    </div>
-  </form>
-</div>
-</body>
+  </body>
 </html>

@@ -3,14 +3,14 @@ import { renderHeader } from '../../components/header.js';
 renderHeader();
 
 //после загрузки страницы, добавляем обработчик события на форму регистрации на странице registration.html
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('#auth-form');
   if (!form) return;
 
   // Добавляем обработчик события на кнопку авторизации
-  const registrationButton = form.querySelector("#user-reg");
+  const registrationButton = form.querySelector('#user-reg');
 
-// Проверяем, что кнопка авторизации существует на странице
+  // Проверяем, что кнопка авторизации существует на странице
   if (registrationButton) {
     registrationButton.addEventListener('click', () => {
       window.location.href = '/registration.html';
@@ -35,24 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // });
 
       const response = {
-        user: "dimon777"
-      }
+        user: 'dimon777',
+      };
 
-
-      localStorage.setItem("token", "123");
-      window.location.href = "/"
-
+      localStorage.setItem('token', '123');
+      window.location.href = '/';
 
       // const result = await response.json();
 
       // console.log(result, '😂')
-
-    
     } catch (error) {
       console.error('Error:', error);
       alert('Ошибка при регистрации. Попробуйте снова.');
     }
   });
 });
-
-

@@ -1,16 +1,14 @@
-
-.comment-main-container{
+.comment-main-container {
   width: 70vw;
   max-width: 800px;
-  margin: 2rem auto;    
-  padding: 0 1rem;  
+  margin: 2rem auto;
+  padding: 0 1rem;
 }
 
-
-  .comment__title{
+.comment__title {
   font-family: 'Neue Haas Unica W1G', sans-serif;
-  }
-.comment-remark{
+}
+.comment-remark {
   display: flex;
   flex-direction: column;
   /* row-gap: 1rem; */
@@ -20,26 +18,23 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   border-radius: 8px;
 }
-.comment-remark__header{
+.comment-remark__header {
   padding: 1vw 2vh;
 
   display: flex;
   gap: 10px;
-
-
 }
 
-.container-coment{
-
+.container-coment {
 }
-.comment-remark__body{
+.comment-remark__body {
   display: flex;
   align-items: center;
   padding: 0.5vw 2vh 2vw 2vh;
   line-height: 1.3rem;
-      /* border: 1px solid black; */
+  /* border: 1px solid black; */
 }
-.comment-remark__data{
+.comment-remark__data {
   max-width: 40vw;
   padding-right: 1vw;
   font-size: 15px;
@@ -47,36 +42,36 @@
   font-style: 'Regular';
   font-family: 'Neue Haas Unica W1G', sans-serif;
 }
-.btn-delete{
-transition: transform 0.3s ease, background-color 0.3s ease ;
+.btn-delete {
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
   border: none;
   background: none;
   display: flex;
-  
 }
-.btn-delete:hover{
+.btn-delete:hover {
   transform: scale(1.3);
-  background-color: #f1f5f9 ;
+  background-color: #f1f5f9;
 }
-.btn-comments__post{
+.btn-comments__post {
   border: 1px solid #f1f5f9;
-    border-radius: 0.5rem;
+  border-radius: 0.5rem;
   height: 5vh;
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
-  /* background-color: #f1f5f9; */ 
+  /* background-color: #f1f5f9; */
   background-color: white;
   color: #2563eb;
   transition: background-color 0.3s ease;
 }
 .btn-comments__post:hover {
-    background-color: #e2e8f0 ;
+  background-color: #e2e8f0;
 }
 
-
-    /* fomr*/
-#comment-form{
+/* fomr*/
+#comment-form {
   display: flex;
   flex-direction: column;
   row-gap: 1rem;
@@ -85,11 +80,11 @@ transition: transform 0.3s ease, background-color 0.3s ease ;
   margin: 2rem 0 2rem auto;
   border-radius: 8px;
 }
-textarea{
+textarea {
   box-shadow: 0 0 9px rgba(0, 0, 0, 0.1);
-  border: none;  
-  background-color:#eceef17d;
-  padding: 1.5rem 1rem 1rem; 
+  border: none;
+  background-color: #eceef17d;
+  padding: 1.5rem 1rem 1rem;
   resize: none;
   outline: none;
   transition: box-shadow 0.2s ease;
@@ -98,30 +93,28 @@ textarea{
 }
 textarea:focus {
   box-shadow: 0 0 0 2px rgba(250, 204, 21, 0.6);
-
 }
 
 /* текст‑плейсхолдер */
 textarea::placeholder {
-  color: #9CA3AF;
-  opacity: 1;  /* чтобы цвет точно совпадал */
+  color: #9ca3af;
+  opacity: 1; /* чтобы цвет точно совпадал */
   font-family: 'Tinkoff Sans', sans-serif;
-  opacity: 0.6;   
+  opacity: 0.6;
 }
 
-.send-btn{
+.send-btn {
   border-radius: 0.5rem;
   height: 5vh;
   padding: 0.375rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 500;
-  background-color: #FFDD2D; 
+  background-color: #ffdd2d;
   transition: background-color 0.3s ease;
   border: none;
 }
 
-div[id="post-preview"] {
-
+div[id='post-preview'] {
   padding-top: 10vh;
   display: flex;
   flex-direction: column;
@@ -130,4 +123,3 @@ div[id="post-preview"] {
   margin: 2rem auto;
   background: #fff;
 }
-
