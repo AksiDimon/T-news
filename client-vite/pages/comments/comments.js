@@ -1,4 +1,5 @@
 import { renderHeader } from '../../components/header.js';
+import { insertPost } from '../../components/post.js';
 import {SERVER_URL} from '../../consts.js' 
 renderHeader();
 
@@ -121,9 +122,7 @@ async function loadPost() {
       return;
     }
 
-    const commentNode = renderPost(post);
-    postContainerElement.appendChild(commentNode);
-
+    insertPost(post, 'post-container')
     
   } catch (err) {
     console.error(err);
@@ -171,7 +170,7 @@ function sendComment(e) {
   if(!text) return 
 
   const comment = {
-   userId: 'User',
+   userId: 'User_0',
    content: text,
     avatar: "./svg",
   }

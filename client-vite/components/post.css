@@ -6,6 +6,7 @@
     flex-direction: column;
     /* border: 1px solid #ccc; */
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3.5rem;
 }
 .post__icon {
     margin-right: 10px;

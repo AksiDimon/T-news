@@ -1,160 +1,159 @@
+// Рендерим header, если нужно
 import { renderHeader } from '../../components/header.js';
-import { insertPost } from '../../components/post.js';
+import {insertPost} from "../../components/post";
+import {SERVER_URL} from "../../consts";
 
 renderHeader();
-// Получаем узлы один раз
-const commentTmpl = document.getElementById('comment-template');
+
+// Основные элементы
 const form = document.getElementById('comment-form');
 const textarea = document.getElementById('story');
-const commentsCont = document.getElementById('comments-container');
-
-//логика с редак фото
+const postsContainer = document.querySelector('#posts-container');
+const avatarInput = document.getElementById('avatar-input');
+const avatarImg = document.querySelector('.profile__avatar img');
 const editPhotoBtn = document.querySelector('.profile__edit-photo');
-const avatarInput   = document.getElementById('avatar-input');
-const avatarImg     = document.querySelector('.profile__avatar img');
+const subscribeBtn = document.querySelector('.profile__subscribe');
+const userId = 'user_0';
+const apiBase = 'http://localhost:3000/users';
 
-editPhotoBtn.addEventListener('click', () => avatarInput.click());
+// Подписка
+subscribeBtn?.addEventListener('click', () => {
+  subscribeBtn.textContent = subscribeBtn.textContent.trim() === 'Подписаться'
+    ? 'Отписаться'
+    : 'Подписаться';
+});
 
+// Редактирование аватара
+editPhotoBtn?.addEventListener('click', () => avatarInput.click());
 
-avatarInput.addEventListener('change', async (e) => {
+avatarInput?.addEventListener('change', async (e) => {
   const file = e.target.files[0];
   if (!file) return;
 
-  // 2.1. Превью в профиле
   const reader = new FileReader();
-  reader.onload = () => {
+  reader.onload = async () => {
     avatarImg.src = reader.result;
+
+    try {
+      const res = await fetch(`${apiBase}/${userId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ avatar: reader.result })
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      console.log('Аватар обновлён');
+    } catch (err) {
+      console.error('Ошибка загрузки аватара:', err);
+      alert('Не удалось сохранить фото');
+    }
   };
+
+  []
+
   reader.readAsDataURL(file);
-
-  // 2.2. Патчим пользователя в mock-сервере
-  // Замените user_1 на текущий id из вашего состояния
-  const userId = 'user_1';
-  try {
-    const res = await fetch(`http://localhost:3000/users/${userId}`, {
-      method: 'PATCH',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ avatar: reader.result })
-    });
-    if (!res.ok) throw new Error(res.statusText);
-    console.log('Аватар сохранён в db.json');
-  } catch (err) {
-    console.error('Ошибка при сохранении аватара:', err);
-    alert('Не удалось сохранить фото');
-  }
 });
 
-
-//Редактирование имени и описания профеля --------
-// в profile.js, после renderHeader() и кода комментариев
-const EDITABLE_SELECTOR = '.profile__edit-icon';
-const userId  = 'user_1';  // или ваше текущее user.id
-const apiBase = 'http://localhost:3000/users';
-
-document.querySelectorAll(EDITABLE_SELECTOR).forEach(icon => {
-  icon.addEventListener('click', () => {
-    const field = icon.dataset.field;              // "username" или "bio"
-    // находим элемент с текстом рядом
-    const textEl = icon.previousElementSibling || 
-                   document.querySelector(`.profile__${field}${field==='bio' ? '-text' : ''}`);
-    if (!textEl) return;
-
-    // включаем редактирование
-    textEl.contentEditable = 'true';
-    textEl.focus();
-    textEl.classList.add('editing'); // можно в CSS добавить подсветку
-
-    // сохраняем по потере фокуса
-    const save = async () => {
-      textEl.contentEditable = 'false';
-      textEl.classList.remove('editing');
-      textEl.removeEventListener('blur', save);
-
-      const newValue = textEl.textContent.trim();
-      if (!newValue) return;
-
-      try {
-        const res = await fetch(`${apiBase}/${userId}`, {
-          method: 'PATCH',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ [field]: newValue })
-        });
-        if (!res.ok) throw new Error(res.statusText);
-        console.log(`Поле ${field} обновлено в mock-server`);
-      } catch (err) {
-        console.error(err);
-        alert(`Не удалось сохранить ${field}`);
-      }
-    };
-
-    // отслеживаем blur (и Enter, если нужно)
-    textEl.addEventListener('blur', save);
-    textEl.addEventListener('keydown', e => {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        textEl.blur();
-      }
-    });
-  });
+// Редактирование имени/описания
+document.querySelectorAll('.profile__edit-icon')?.forEach(icon => {
+  icon.addEventListener('click', () => enableInlineEdit(icon));
 });
 
+function enableInlineEdit(icon) {
+  const field = icon.dataset.field;
+  const textEl = icon.previousElementSibling || document.querySelector(`.profile__${field}`);
+  if (!textEl) return;
 
+  textEl.contentEditable = 'true';
+  textEl.focus();
+  textEl.classList.add('editing');
 
-//Логика отправки коментов --------------
-form.addEventListener('submit', sendComment);
+  const save = async () => {
+    textEl.contentEditable = 'false';
+    textEl.classList.remove('editing');
+    textEl.removeEventListener('blur', save);
 
-async function sendComment(e) {
-  e.preventDefault();
+    const newValue = textEl.textContent.trim();
+    if (!newValue) return;
 
-  const text = textarea.value.trim();
-  if (!text) return; // ничего не делаем, если пусто
-
-  // здесь формируем «данные» комментария
-  const commentData = {
-    userId: 'User', // у вас может быть своё имя
-    content: text,
+    try {
+      const res = await fetch(`${apiBase}/${userId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ [field]: newValue })
+      });
+      if (!res.ok) throw new Error(res.statusText);
+      console.log(`${field} обновлено`);
+    } catch (err) {
+      console.error(`Ошибка обновления ${field}:`, err);
+      alert(`Не удалось сохранить ${field}`);
+    }
   };
 
-  // рендерим новый комментарий и добавляем в контейнер
-  await insertPost(commentData, "#posts-container");
+  textEl.addEventListener('blur', save);
+  textEl.addEventListener('keydown', e => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      textEl.blur();
+    }
+  });
+}
 
-  textarea.value = ''; // чистим поле
+form?.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const text = textarea.value.trim();
+  if (!text) return;
+
+  const post = {
+    userId: userId,
+    content: text,
+    likes: 0,
+    comments: [],
+  };
+
+
+  textarea.value = '';
   textarea.focus();
-}
 
-function handleLike(e) {
-  const btn = e.currentTarget;
+  const newPost = await createPost(post);
 
-  const countSpan = btn.querySelector('.count-like');
+  await insertPost(newPost, '#posts-container');
+});
 
-  let count = Number(countSpan.textContent.trim());
+export async function createPost(post) {
+  const res = await fetch(`${SERVER_URL}/posts`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(post),
+  });
 
-  const isLiked = btn.classList.contains('liked');
-  isLiked;
-  if (!isLiked) {
-    countSpan.textContent = ` ${count + 1}`;
-    btn.classList.add('liked');
-  } else {
-    countSpan.textContent = ` ${count - 1}`;
-    btn.classList.remove('liked');
+  if (!res.ok) {
+    throw new Error('Не удалось обновить лайки');
   }
 
-  console.log(isLiked, '😂');
+  return await res.json();
 }
 
-function deleteComment (e) {
-    const commentEl = e.target.closest('.comment');
-  if (commentEl) commentEl.remove();
-}
+async function loadPosts() {
+  try {
+    const res = await fetch(`${SERVER_URL}/posts`);
+    const posts = await res.json();
+    const userPost = posts.filter((post)=> post.userId === userId);
 
+    if (!posts.length) {
+      postsContainer.innerHTML = '<p>Комментариев пока нет.</p>';
+      return;
+    }
 
-
-  const subscribeBtn =  document.querySelector('.profile__subscribe');
-
-subscribeBtn.addEventListener('click', () => {
-  if (subscribeBtn.textContent.trim() === 'Подписаться') {
-    subscribeBtn.textContent = 'Отписаться';
-  } else {
-    subscribeBtn.textContent = 'Подписаться';
+    userPost.forEach((post) => {
+      insertPost(post, "#posts-container")
+    });
+  } catch (err) {
+    console.error(err);
+    postsContainer.innerHTML =
+      '<p class="error">Не удалось загрузить комментарии.</p>';
   }
-})
+}
+
+loadPosts();

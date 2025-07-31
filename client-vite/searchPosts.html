@@ -10,6 +10,7 @@
     <script type="module" src="/components/header.js"></script>
     <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css" />
     <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
+    <link rel="stylesheet" href="/components/post.css" />
     <script type="module" src="pages/mainNoAuth/mainNoAuth.js"></script>
   </head>
   <style></style>
@@ -19,10 +20,10 @@
     <div class="search-user">
       <!-- 1. Тогглер: переключатель «Пользователи / Посты» -->
       <nav class="toggle-nav">
-        <button class="toggle-nav__btn toggle-nav__btn--active" onclick="location.href='searchUsers.html'">
+        <button class="toggle-nav__btn" onclick="location.href='searchUsers.html'">
           Пользователи
         </button>
-        <button class="toggle-nav__btn">Посты</button>
+        <button class="toggle-nav__btn toggle-nav__btn--active">Посты</button>
       </nav>
 
       <!-- Место отображения найденых постов -->
