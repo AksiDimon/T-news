@@ -1,10 +1,9 @@
-    /* Сами блоки с рамкой для наглядности */
+
     .search-user {
-      /* border: 1px solid black; */
       padding: 4rem;
       width: 90vw;
-      max-width: 900px; /* можно подогнать под макет */
-      margin: 0 auto; /* по центру */
+      max-width: 900px; 
+      margin: 0 auto; 
     }
 
     @media (max-width: 400px) {
@@ -15,13 +14,11 @@
 
     /* 1. Навигация-тогглер */
     .toggle-nav {
-      /* border: 1px solid black; */
       display: flex;
       gap: 0.5rem;
       margin-bottom: 2rem;
     }
     .toggle-nav__btn {
-      /* border: 1px solid black; */
       background: white;
       padding: 0.5rem 1rem;
       cursor: pointer;
@@ -40,13 +37,11 @@
 
     /* 2. Список */
     .user-list {
-      /* border: 1px solid black; */
       list-style: none;
       padding: 0;
       margin: 0;
     }
     .user-list__item {
-      /* border: 1px solid black; */
       display: flex;
       align-items: center;
       justify-content: space-between;

@@ -25,7 +25,7 @@ subscribeBtn?.addEventListener('click', () => {
     : 'Подписаться';
 });
 
-// --- Загрузка данных профиля ---
+// --- Загрузка bio and name профиля ---
 async function loadProfile() {
   try {
     const res  = await fetch(`${apiBase}/${userId}`);

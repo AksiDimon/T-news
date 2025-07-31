@@ -1,5 +1,5 @@
 import { renderHeader } from '../../components/header.js';
-// Импортируем функцию для рендеринга header
+
 renderHeader();
 
 //после загрузки страницы, добавляем обработчик события на форму регистрации на странице registration.html
@@ -33,8 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-     //backend успех
-
       window.location.href = "/auth.html"
 
     } catch (error) {

@@ -22,7 +22,7 @@ function renderUser(user) {
 }
 
 function renderUserList(users) {
-  userContainer.innerHTML = ""; // очистка
+  userContainer.innerHTML = ""; 
   users.forEach(user => {
     userContainer.appendChild(renderUser(user));
   });
@@ -30,7 +30,7 @@ function renderUserList(users) {
 
 async function loadUsers() {
   const usersReq = await fetch(`${SERVER_URL}/users`);
-  allUsers = await usersReq.json(); // сохранить в локальное состояние
+  allUsers = await usersReq.json(); 
   // фильтрация по ?q если есть
   const urlParams = new URLSearchParams(window.location.search);
   const searchString = urlParams.get("q") || "";
