@@ -10,61 +10,9 @@ const state = {
 const postContainerElement      = document.getElementById('post-preview');
 const commentsContainerElement = document.getElementById('comments-container')
 
-const postTmpl    = document.getElementById('post-template');
+
 const commentTmpl    = document.getElementById('comment-template');
 
-
-
-
- console.log( window)
-function renderPost(post) {
-  // 1) Клонируем содержимое <template>
-  const frag = postTmpl.content.cloneNode(true);
-
-  //fetch(postId)
-
-  // 2) Находим слоты и подставляем текст
-  const titleSlot = frag.querySelector('slot[name="title"]');
-  const bodySlot  = frag.querySelector('slot[name="body"]');
-  titleSlot.textContent = post.userId;
-  bodySlot .textContent = post.content;
-
-
-    const btnLike = frag.querySelector('.btn-like');
-    btnLike.addEventListener('click', handleLike)
-
-      // Устанавливаем начальное количество комментариев
-  const countSpan = frag.querySelector('.btn-comments__count');
-  // Если у post есть массив комментариев
-  const initialCount = Array.isArray(post.comments) ? post.comments.length : 0;
-  countSpan.textContent = initialCount;
-
-  console.log(btnLike, '❤️')
-
-  // 4) Возвращаем документ-фрагмент
-  return frag;
-}
-    function handleLike (e) {
-      const btn = e.currentTarget;
-
-      const countSpan = btn.querySelector('.count-like');
-
-      let count = Number(countSpan.textContent.trim())
-      
-
-
-      const isLiked = btn.classList.contains('liked');
-      isLiked
-      if (!isLiked) {
-        countSpan.textContent = ` ${count + 1}`
-        btn.classList.add('liked'); 
-      } else {
-        countSpan.textContent = ` ${count - 1}`;
-        btn.classList.remove('liked');
-      }
-
-      console.log(isLiked, '😂')
-    }
 
 
 function renderComment(comment) {
@@ -107,7 +55,7 @@ function deleteComment (e) {
 }
 
 const urlParams = new URLSearchParams(window.location.search);
-const postId = urlParams.get("postId");
+
 
 async function loadPost() {
   try {
@@ -122,7 +70,7 @@ async function loadPost() {
       return;
     }
 
-    insertPost(post, 'post-container')
+    insertPost(post, '#post-preview', 'pointer-events: none; border: 1px solid rgba(0, 16, 36, 0.12); background: none')
     
   } catch (err) {
     console.error(err);

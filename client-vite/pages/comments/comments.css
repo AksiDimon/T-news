@@ -15,6 +15,10 @@
       padding-left: 15vw;
     }
   } */
+
+  .comment__title{
+  font-family: 'Neue Haas Unica W1G', sans-serif;
+  }
 .comment-remark{
   display: flex;
   flex-direction: column;
@@ -27,9 +31,10 @@
 }
 .comment-remark__header{
   padding: 1vw 2vh;
-  /* border: 1px solid black; */
+
   display: flex;
-  flex: 1;
+  gap: 10px;
+
 
 }
 
@@ -123,3 +128,16 @@ textarea::placeholder {
   transition: background-color 0.3s ease;
   border: none;
 }
+
+div[id="post-preview"] {
+
+        padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+        width: 70vw;
+        max-width: 800px;
+        margin: 2rem auto;
+        /* overflow: hidden; */
+        background: #fff;
+}
+

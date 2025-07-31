@@ -10,8 +10,10 @@ export async function loadCardTemplate() {
   return await res.text();
 }
 
-export async function insertPost(post, targetSelector) {
+export async function insertPost(post, targetSelector, btnCommentsStyle = "") {
   const templateHTML = await loadCardTemplate();
+
+  console.log(post, targetSelector)
 
   const parser = new DOMParser();
   const doc = parser.parseFromString(templateHTML, 'text/html');
@@ -49,8 +51,11 @@ export async function insertPost(post, targetSelector) {
       likeCountElem.textContent = currentLikes;
     }
   });
-
-  frag.querySelector(".btn-comments").addEventListener("click", ()=> {
+  
+  const btnComments = frag.querySelector('.btn-comments');
+  btnComments.style = btnCommentsStyle;
+  
+  btnComments.addEventListener("click", ()=> {
     window.location.href = `/comments.html?postId=${post.id}`})
   const postElem = frag.querySelector('.post');
 
@@ -115,3 +120,11 @@ export async function deletePost(postId) {
 
   return await res.json();
 }
+
+
+
+
+
+
+
+
