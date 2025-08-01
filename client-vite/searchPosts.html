@@ -6,12 +6,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="/components/header.css" />
     <link rel="stylesheet" href="/components/styles.css" />
-    <script type="module" src="/pages/profile/profile.js"></script>
-    <script type="module" src="/components/header.js"></script>
     <link rel="stylesheet" href="/pages/searchUsers/searchUsers.css" />
     <link rel="stylesheet" href="/pages/mainNoAuth/mainNoAuth.css" />
     <link rel="stylesheet" href="/components/post.css" />
-    <script type="module" src="pages/mainNoAuth/mainNoAuth.js"></script>
+    <script type="module" src='/pages/searchPosts/searchPosts.js' ></script>
   </head>
   <style></style>
   <body>
@@ -22,11 +20,11 @@
       <nav class="toggle-nav">
         <button
           class="toggle-nav__btn"
-          onclick="location.href='searchUsers.html'"
+          id="btn-toggle-users"
         >
           Пользователи
         </button>
-        <button class="toggle-nav__btn toggle-nav__btn--active">Посты</button>
+        <button id="btn-toggle-posts" class="toggle-nav__btn toggle-nav__btn--active">Посты</button>
       </nav>
 
       <!-- Место отображения найденых постов -->

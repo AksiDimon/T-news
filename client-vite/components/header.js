@@ -64,6 +64,48 @@ export async function renderHeader(
   const res = await fetch('/components/Header.html');
   container.innerHTML = await res.text();
 
+  // 2. Захватываем нужные элементы
+  const form     = container.querySelector('#header-search-form');
+  const inputEl  = form.querySelector('input[name="q"]');
+  const btnUsers = container.querySelector('#btn-toggle-users');
+  const btnPosts = container.querySelector('#btn-toggle-posts');
+  const path     = window.location.pathname;
+
+  // 3. Устанавливаем default-action на текущую страницу:
+  //    — если мы на searchPosts.html, то ищем там,
+  //    — иначе — всегда на searchUsers.html
+  if (path.endsWith('searchPosts.html')) {
+    form.action = 'searchPosts.html';
+  } else {
+    form.action = 'searchUsers.html';
+  }
+
+  // 4. Если передали колбэк поиска, то перехватываем сабмит и ввод «live»
+  if (typeof onSearchInput === 'function') {
+    addEventHeaderSearch(inputEl, onSearchInput);
+  }
+
+  // 5. Кнопки переключения «Пользователи / Посты»
+  //    при клике меняют и страницу, и form.action
+  btnUsers.addEventListener('click', () => {
+    form.action = 'searchUsers.html';
+    window.location.href = `searchUsers.html${location.search}`;
+  });
+  btnPosts.addEventListener('click', () => {
+    form.action = 'searchPosts.html';
+    window.location.href = `searchPosts.html${location.search}`;
+  });
+
+  // 6. Подсветка активного таба
+  btnUsers.classList.toggle(
+    'toggle-nav__btn--active',
+    path.endsWith('searchUsers.html')
+  );
+  btnPosts.classList.toggle(
+    'toggle-nav__btn--active',
+    path.endsWith('searchPosts.html')
+  );
+
   // 2. Находим блоки
   const guestBlock = container.querySelector('.guest-actions');
   const userBlock = container.querySelector('.user-actions');
@@ -71,8 +113,7 @@ export async function renderHeader(
   const buttonAuth = container.querySelector('.guest-actions__auth');
   // const searchElement = document.getElementById("search-auth")
 
-  // 3. Определяем, на какой мы странице
-  const path = window.location.pathname;
+
 
   const isAuthPage = path === '/auth.html' || path === '/registration.html';
   const isMainNoAuth = path === '/mainNoAuth.html'; // или просто !isAuthPage
