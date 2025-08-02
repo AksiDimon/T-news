@@ -176,6 +176,7 @@ textarea:focus {
   border: none;
   background: none;
   display: flex;
+  cursor: pointer;
 }
 .btn-delete:hover {
   transform: scale(1.3);
