@@ -26,14 +26,25 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     // Функция перехода, сохраняющая q
-    function goTo(page) {
-      const params = new URLSearchParams(window.location.search);
-      const q = params.get('q');
-      window.location.href = `${page}${q ? `?q=${encodeURIComponent(q)}` : ''}`;
-    }
+  //   function goTo(page) {
+  //     const params = new URLSearchParams(window.location.search);
+  //     const q = params.get('q');
+  //     window.location.href = `${page}${q ? `?q=${encodeURIComponent(q)}` : ''}`;
+  //   }
 
-    btnUsers.addEventListener('click', () => goTo('searchUsers.html'));
-    btnPosts.addEventListener('click', () => goTo('searchPosts.html'));
+  //   btnUsers.addEventListener('click', () => goTo('searchUsers.html'));
+  //   btnPosts.addEventListener('click', () => goTo('searchPosts.html'));
+  // }
+  function goTo(page) {
+     // Сбросим поле поиска
+     const inputEl = document.querySelector('#header-search-form input[name="q"]');
+     if (inputEl) inputEl.value = '';
+    // Перейдём без параметров ?q=
+    window.location.href = page;
+   }
+
+   btnUsers.addEventListener('click', () => goTo('searchUsers.html'));
+   btnPosts.addEventListener('click', () => goTo('searchPosts.html'));
   }
 
   // 4) Работа со списком пользователей
