@@ -33,18 +33,19 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = '') {
 
   btnLike.addEventListener('click', async () => {
     try {
-      if (arrayLikes.find((like) => like.postId === post.id)) {
-        return;
-      }
+    const likedIndex = arrayLikes.findIndex(like => like.postId === post.id);
+    if (likedIndex !== -1) {
+
+      currentLikes -= 1;
+      arrayLikes.splice(likedIndex, 1);
+    } else {
 
       currentLikes += 1;
-      arrayLikes.push({
-        postId: post.id,
-      });
-      likeCountElem.textContent = currentLikes;
-
-      await updateLikes(post.id, currentLikes);
-    } catch (err) {
+      arrayLikes.push({ postId: post.id });
+    }
+    likeCountElem.textContent = currentLikes;
+    await updateLikes(post.id, currentLikes);
+  } catch (err) {
       target.querySelector(`[data-id="${post.id}"]`)?.remove();
       currentLikes -= 1;
       likeCountElem.textContent = currentLikes;
@@ -65,7 +66,7 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = '') {
     deleteButton.addEventListener('click', async () => {
       try {
         await deletePost(post.id);
-        postElem.remove(); // <-- удаляем из реального DOM
+        postElem.remove(); 
       } catch (err) {
         console.error(err);
         alert('Не удалось удалить пост');

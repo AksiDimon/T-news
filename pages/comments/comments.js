@@ -13,12 +13,9 @@ const commentsContainerElement = document.getElementById('comments-container');
 const commentTmpl = document.getElementById('comment-template');
 
 function renderComment(comment) {
-  // 1) Клонируем содержимое <template>
+
   const frag = commentTmpl.content.cloneNode(true);
 
-  //fetch(postId)
-
-  // 2) Находим слоты и подставляем текст
   const titleSlot = frag.querySelector('slot[name="title"]');
   const bodySlot = frag.querySelector('slot[name="body"]');
   const commentWrapper = frag.querySelector('.comment-remark');
@@ -28,7 +25,6 @@ function renderComment(comment) {
   console.log(commentWrapper);
   commentWrapper.dataset.id = comment.id;
 
-  // Добавляю кнопку удаления комента только для залагиненых
   const btnDelete = frag.querySelector('.btn-delete');
   btnDelete.addEventListener('click', deleteComment);
 
@@ -39,14 +35,52 @@ function renderComment(comment) {
     btnDelete.addEventListener('click', deleteComment);
   }
 
-  // 4) Возвращаем документ-фрагмент
   return frag;
 }
 
-function deleteComment(e) {
+// локальное удаление комента.
+// function deleteComment(e) {
+//   const commentEl = e.target.closest('.comment-remark');
+//   if (commentEl) commentEl.remove();
+// }
+
+async function deleteComment(e) {
   const commentEl = e.target.closest('.comment-remark');
-  if (commentEl) commentEl.remove();
+  if (!commentEl) return;
+
+
+  const commentId = commentEl.dataset.id;
+  const postId = new URLSearchParams(window.location.search).get('postId');
+
+  try {
+
+    const postRes = await fetch(`${SERVER_URL}/posts/${postId}`);
+    if (!postRes.ok) throw new Error('Не удалось загрузить пост');
+    const post = await postRes.json();
+
+
+    const updatedComments = (post.comments || []).filter(c => c.id !== commentId);
+
+   
+    const patchRes = await fetch(`${SERVER_URL}/posts/${postId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ comments: updatedComments })
+    });
+    if (!patchRes.ok) throw new Error('Не удалось удалить комментарий на сервере');
+
+
+    commentEl.remove();
+
+    const countSpan = postContainerElement.querySelector('.btn-posts__count');
+    countSpan.textContent = updatedComments.length;
+
+  } catch (err) {
+    console.error(err);
+    alert('Ошибка при удалении комментария: ' + err.message);
+  }
 }
+
 
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -98,29 +132,62 @@ async function loadComments() {
 loadComments();
 loadPost();
 
-function sendComment(e) {
+async function sendComment(e) {
   e.preventDefault();
 
   const textarea = document.getElementById('story');
   const text = textarea.value.trim();
+  if (!text) return; 
 
-  if (!text) return;
-
-  const comment = {
+  const newComment = {
+    id: String(Date.now()),
     userId: 'User_0',
     content: text,
-    avatar: './svg',
+
+
   };
 
-  const commentNode = renderComment(comment);
-  commentsContainerElement.appendChild(commentNode);
 
-  textarea.value = '';
+  const postId = new URLSearchParams(window.location.search).get('postId');
 
-  const countSpan = postContainerElement.querySelector('.btn-comments__count');
-  const current = Number(countSpan.textContent.trim()) || 0;
-  countSpan.textContent = current + 1;
+  try {
+  
+    const postRes = await fetch(`${SERVER_URL}/posts/${postId}`);
+    if (!postRes.ok) throw new Error('Не удалось получить пост');
+    const post = await postRes.json();
+
+
+    const updatedComments = [...(post.comments || []), newComment];
+
+    const patchRes = await fetch(`${SERVER_URL}/posts/${postId}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ comments: updatedComments })
+    });
+    if (!patchRes.ok) throw new Error('Не удалось сохранить комментарий');
+
+  
+    const updatedPost = await patchRes.json();
+    state.comments = updatedPost.comments;
+
+
+    const savedComment = state.comments[state.comments.length - 1];
+
+    const commentNode = renderComment(savedComment);
+    commentsContainerElement.appendChild(commentNode);
+
+  
+    const countSpan = postContainerElement.querySelector('.btn-posts__count');
+    countSpan.textContent = state.comments.length;
+
+    textarea.value = '';
+
+  } catch (err) {
+    console.error(err);
+    alert('Ошибка при отправке комментария: ' + err.message);
+  }
 }
+
 const btnSendComment = document.getElementById('comment-form');
 console.log(btnSendComment);
 btnSendComment.addEventListener('submit', sendComment);
