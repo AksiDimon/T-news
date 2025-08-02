@@ -40,6 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
   function renderPost(post) {
     const frag = postTmpl.content.cloneNode(true);
+    const titleSlot = frag.querySelector('slot[name="title"]');
+  titleSlot.textContent = post.userName
     frag.querySelector('slot[name="body"]').textContent = post.content;
     return frag;
   }
