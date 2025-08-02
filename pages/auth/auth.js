@@ -25,15 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const data = Object.fromEntries(formData.entries());
 
     try {
-      // Отправляем данные на сервер тут ручки твоего бэка
-      // const response = await fetch('/api/auth', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data),
-      // });
-
       const response = {
         user: 'dimon777',
       };

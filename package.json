@@ -1,9 +1,17 @@
 {
+  "name": "vite-mpa",
+  "version": "1.0.0",
   "scripts": {
+    "dev": "vite",
+    "mock-server": "json-server --watch db.json --port 3000",
+    "build": "vite build",
+    "preview": "vite preview",
     "lint": "eslint . --ext .js,.css",
     "format": "prettier --write \"**/*.{js,css,html,md,json}\""
   },
   "devDependencies": {
+    "json-server": "^0.9.6",
+    "vite": "^5.0.0",
     "prettier": "^3.6.2"
   }
 }

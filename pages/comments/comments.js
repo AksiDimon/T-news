@@ -13,12 +13,9 @@ const commentsContainerElement = document.getElementById('comments-container');
 const commentTmpl = document.getElementById('comment-template');
 
 function renderComment(comment) {
-  // 1) Клонируем содержимое <template>
+
   const frag = commentTmpl.content.cloneNode(true);
 
-  //fetch(postId)
-
-  // 2) Находим слоты и подставляем текст
   const titleSlot = frag.querySelector('slot[name="title"]');
   const bodySlot = frag.querySelector('slot[name="body"]');
   const commentWrapper = frag.querySelector('.comment-remark');
@@ -28,7 +25,6 @@ function renderComment(comment) {
   console.log(commentWrapper);
   commentWrapper.dataset.id = comment.id;
 
-  // Добавляю кнопку удаления комента только для залагиненых
   const btnDelete = frag.querySelector('.btn-delete');
   btnDelete.addEventListener('click', deleteComment);
 
@@ -39,7 +35,6 @@ function renderComment(comment) {
     btnDelete.addEventListener('click', deleteComment);
   }
 
-  // 4) Возвращаем документ-фрагмент
   return frag;
 }
 
@@ -53,23 +48,20 @@ async function deleteComment(e) {
   const commentEl = e.target.closest('.comment-remark');
   if (!commentEl) return;
 
-  // console.log('удаляемый элемент:', commentEl);
-  // console.log('dataset:', commentEl.dataset);
-  // console.log('commentId из dataset.id →', commentEl.dataset.id);
 
   const commentId = commentEl.dataset.id;
   const postId = new URLSearchParams(window.location.search).get('postId');
 
   try {
-    // 1. Подтягиваем текущий пост (или берём из state.comments, если вы его заранее загрузили)
+
     const postRes = await fetch(`${SERVER_URL}/posts/${postId}`);
     if (!postRes.ok) throw new Error('Не удалось загрузить пост');
     const post = await postRes.json();
 
-    // 2. Фильтруем комментарий по id
+
     const updatedComments = (post.comments || []).filter(c => c.id !== commentId);
 
-    // 3. Отправляем на сервер обновлённый массив комментариев
+   
     const patchRes = await fetch(`${SERVER_URL}/posts/${postId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -77,7 +69,7 @@ async function deleteComment(e) {
     });
     if (!patchRes.ok) throw new Error('Не удалось удалить комментарий на сервере');
 
-    // 4. После успешного ответа — удаляем ноду и обновляем счётчик
+
     commentEl.remove();
 
     const countSpan = postContainerElement.querySelector('.btn-posts__count');
@@ -145,30 +137,28 @@ async function sendComment(e) {
 
   const textarea = document.getElementById('story');
   const text = textarea.value.trim();
-  if (!text) return;  // не отправляем пустые
+  if (!text) return; 
 
-  // 1. Подготовить объект комментария
   const newComment = {
-    id: new Date().toString(),
+    id: String(Date.now()),
     userId: 'User_0',
     content: text,
-    avatar: './svg'
-    // не кладём здесь `id` — пусть сервер сам его сгенерирует
+
+
   };
 
-  // 2. Определить postId из URL
+
   const postId = new URLSearchParams(window.location.search).get('postId');
 
   try {
-    // 3. Загрузить текущий пост, чтобы получить существующий массив comments
+  
     const postRes = await fetch(`${SERVER_URL}/posts/${postId}`);
     if (!postRes.ok) throw new Error('Не удалось получить пост');
     const post = await postRes.json();
 
-    // 4. Сформировать новый массив комментариев
+
     const updatedComments = [...(post.comments || []), newComment];
 
-    // 5. Отправить PATCH на бекенд
     const patchRes = await fetch(`${SERVER_URL}/posts/${postId}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
@@ -176,22 +166,20 @@ async function sendComment(e) {
     });
     if (!patchRes.ok) throw new Error('Не удалось сохранить комментарий');
 
-    // 6. Получить обновлённый пост из ответа
+  
     const updatedPost = await patchRes.json();
     state.comments = updatedPost.comments;
 
-    // 7. Найти только что добавленный комментарий (последний в массиве)
+
     const savedComment = state.comments[state.comments.length - 1];
 
-    // 8. Отрисовать его и добавить в DOM
     const commentNode = renderComment(savedComment);
     commentsContainerElement.appendChild(commentNode);
 
-    // 9. Обновить счётчик комментариев по длине массива
+  
     const countSpan = postContainerElement.querySelector('.btn-posts__count');
     countSpan.textContent = state.comments.length;
 
-    // 10. Очистить поле ввода
     textarea.value = '';
 
   } catch (err) {

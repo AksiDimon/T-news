@@ -35,11 +35,11 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = '') {
     try {
     const likedIndex = arrayLikes.findIndex(like => like.postId === post.id);
     if (likedIndex !== -1) {
-      // уже лайкнуто — снимаем лайк
+
       currentLikes -= 1;
       arrayLikes.splice(likedIndex, 1);
     } else {
-      // ещё не лайкнуто — ставим лайк
+
       currentLikes += 1;
       arrayLikes.push({ postId: post.id });
     }
@@ -66,7 +66,7 @@ export async function insertPost(post, targetSelector, btnCommentsStyle = '') {
     deleteButton.addEventListener('click', async () => {
       try {
         await deletePost(post.id);
-        postElem.remove(); // <-- удаляем из реального DOM
+        postElem.remove(); 
       } catch (err) {
         console.error(err);
         alert('Не удалось удалить пост');
